@@ -1,0 +1,21 @@
+es_MX:
+  messages:
+    lines:
+      number:
+        one: "%{number} línea"
+        other: "%{number} lineas"
+    stations:
+      number:
+        one: "%{number} estación"
+        other: "%{number} estaciones"
+  actions:
+    transports:
+      add: "Agregar nuevo transporte"
+    lines:
+      add: "Agregar nueva línea"
+      see: "Ver líneas"
+    stations:
+      add: "Agregar nueva estación"
+      see: "Ver estaciones"
+    save: "Guardar"
+    edit: "Modificar"

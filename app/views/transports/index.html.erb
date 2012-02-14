@@ -1,0 +1,9 @@
+<%= t('transports.index.title') %>
+
+<%= link_to t('actions.transports.add'), new_transport_path %>
+
+<% if @transports.empty? %>
+	<%= t('transports.index.no_records') %>
+<% else %>
+	<%= render @transports %>
+<% end %>

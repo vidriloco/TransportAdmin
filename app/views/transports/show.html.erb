@@ -1,0 +1,14 @@
+<%= t('transports.show.title') %>
+
+<span class="name"><b><%= t('activerecord.attributes.transport.name') %>: </b><%= @transport.name %></span>
+<span class="twitter"><b><%= t('activerecord.attributes.transport.twitter') %>: </b>@<%= @transport.twitter %></span>
+<span class="name"><b><%= t('activerecord.attributes.transport.mode') %>: </b><%= @transport.humanized_mode %></span>
+
+<p>
+<% if @transport.transport_mode_is?(:bike_sharing) %>
+	<%= count_humanized_with('messages.stations.number', @transport.stations.count).html_safe %>
+<% else %>
+	<%= count_humanized_with('messages.lines.number', @transport.lines.count).html_safe %>
+<% end %>
+</p>
+<%= link_to t('actions.edit'), edit_transport_path(@transport) %>

@@ -1,0 +1,12 @@
+<%= f.label :name, t('activerecord.attributes.transport.name') %>
+<%= f.text_field :name, :id => "transports_name" %><br/>
+
+<%= f.label :mode, t('activerecord.attributes.transport.mode') %>
+<%= f.select :mode, options_for_select(Transport.humanized_modes.invert, @transport.mode), {:include_blank => true}, :id => "transports_mode" %><br/>
+
+<%= f.label :web_page, t('activerecord.attributes.transport.web_page') %>
+<%= f.text_field :web_page, :id => "transports_web_page" %><br/>
+<%= f.label :twitter, t('activerecord.attributes.transport.twitter') %>
+<%= f.text_field :twitter, :id => "transports_twitter" %><br/>
+
+<%= f.submit t('actions.save') %>

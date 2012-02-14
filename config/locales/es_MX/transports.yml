@@ -1,0 +1,29 @@
+es_MX:
+  activerecord:
+    models:
+      transport: "Transporte"
+    attributes:
+      transport:
+        name: "Nombre"
+        mode: "Tipo según modo del transporte"
+        web_page: "Página web"
+        twitter: "Twitter"
+        
+  transports:      
+    edit:
+      title: "Modificar datos de transporte"
+    show:
+      title: "Detalles de transporte"
+    index:
+      title: "Transportes"
+      no_records: "No hay transportes registrados"
+    new:
+      title: "Nuevo Transporte"
+    update:
+      messages:
+        saved: "Transporte ha sido actualizado"
+        not_saved: "Transporte no fue actualizado"
+    create:
+      messages:
+        saved: "Transporte ha sido guardado"
+        not_saved: "Transporte no pudo ser guardado"
