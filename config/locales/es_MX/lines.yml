@@ -1,0 +1,20 @@
+es_MX:
+  activerecord:
+    models:
+      line: "Linea"
+    attributes:
+      line:
+        name: "Nombre"
+        name_by_directions: "Nombre por sus direcciones"
+        color: "Color (hexadecimal)"
+        transport: "Transporte al que pertenece"
+  lines:
+    index:
+      title: "Todas las lineas"
+      no_records: "No hay lines registradas aún"
+    create:
+      messages:
+        saved: "Línea ha sido guardada"
+        not_saved: "Línea no pudo ser guardada"
+    new:
+      title: "Nueva Línea"

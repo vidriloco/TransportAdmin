@@ -1,0 +1,7 @@
+<div id="line-<%= line.id %>" class="transport-<%= line.transport.id %>">
+	<p class="name"><%= link_to line.name, line %></p>
+	<p class="name_by_directions"><%= line.name_by_directions %></p>
+	
+	<%= link_to t('actions.stations.add'), new_station_path %>
+  <%= link_to t('actions.stations.see'), line_stations_path(line) %>
+</div>

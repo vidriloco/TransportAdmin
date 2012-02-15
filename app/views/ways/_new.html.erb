@@ -1,0 +1,10 @@
+<h3><%= t('ways.new.title') %></h3>
+
+<%= form_for [@line, Way.new] do |f| %>
+	<%= f.label :content, t('activerecord.attributes.way.content') %>
+	<%= f.text_field :content, :id => "way_content" %>
+	<%= f.label :description, t('activerecord.attributes.way.description') %>
+	<%= f.text_field :description, :id => "way_description" %>
+	
+	<%= f.submit t('actions.add') %>
+<% end %>

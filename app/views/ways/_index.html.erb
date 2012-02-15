@@ -1,0 +1,15 @@
+<h2><%= t('ways.index.title') %></h2>
+
+<% if @line.ways.empty? %>
+	<%= t('ways.index.no_records') %>
+<% else %>
+	<% @line.ways.each do |way| %>
+		<p class="description"><b><%= t('activerecord.attributes.way.description') %>: </b><%= way.description %></p>
+		<p class="content"><b><%= t('activerecord.attributes.way.content') %>: </b><%= way.humanized_content %></p>
+		<%= button_to t('actions.delete'), way_path(way), :method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
+	<% end %>
+<% end %>
+
+<div class="new-way">
+	<%= render 'ways/new' %>
+</div>

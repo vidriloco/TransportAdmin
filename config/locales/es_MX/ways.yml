@@ -1,0 +1,24 @@
+es_MX:
+  activerecord:
+    models:
+      way: "Trazo"
+    attributes:
+      line:
+        content: "Lista de coordenadas"
+        description: "Descripción"
+  ways:
+    destroy:
+      messages:
+        done: "Trazo eliminado"
+    create:
+      messages:
+        saved: "El trazo ha sido guardado"
+    index: 
+      title: "Trazos para esta línea"
+      no_records: "No hay trazos para esta línea"
+    new:
+      title: "Nuevo trazo"
+    show:
+      human_description: 
+        other: "Vector de coordenadas con %{number} elementos"
+        one: "Vector de coordenadas con un elemento"

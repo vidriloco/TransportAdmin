@@ -20,8 +20,10 @@ feature 'Listing of transports: '  do
   describe "having two transports registered" do
     
     before(:each) do
-      @metro=Factory(:metro, :lines => [Factory(:blue_line), Factory(:red_line)])
-      @ecobici=Factory(:ecobici, :stations => [Factory(:cyclostation)])
+      @metro=Factory(:metro)
+      Factory.build(:blue_line, :transport_id => @metro.id)
+      Factory.build(:red_line, :transport_id => @metro.id)
+      @ecobici=Factory(:ecobici, :stations => [Factory.build(:cyclostation)])
     end
     
     describe "when visiting the index page" do

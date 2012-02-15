@@ -1,0 +1,19 @@
+<h1><%= t('lines.index.title') %></h1>
+
+<%= link_to t('actions.lines.add'), new_line_path %>
+
+<% @transports.each  do |transport| %>
+	
+	<div id="transport-<%= transport.id %>">
+		
+		<p class="section"><%= transport.name %></p>
+		
+		<% if transport.lines.empty? %>
+			<%= t('lines.index.no_records') %>
+		<% else %>
+			<% transport.lines.each do |line| %>
+				<%= render line %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

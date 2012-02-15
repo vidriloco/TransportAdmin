@@ -1,8 +1,8 @@
-<% unless @transport.errors.empty? %>
+<% if @transport.errors.any? %>
 	<%= t('transports.create.messages.not_saved') %>
 <% end %>
 
-<%= t('transports.new.title') %>
+<h1><%= t('transports.new.title') %></h1>
 
 <%= form_for @transport do |f| %>
 	<%= render :partial => 'form', :locals => {:f => f} %>

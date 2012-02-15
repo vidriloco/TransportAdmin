@@ -9,7 +9,10 @@ es_MX:
         web_page: "Página web"
         twitter: "Twitter"
         
-  transports:      
+  transports:  
+    destroy:
+      messages:
+        done: "Transporte eliminado"
     edit:
       title: "Modificar datos de transporte"
     show:

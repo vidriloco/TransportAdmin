@@ -4,6 +4,7 @@ class CreateLines < ActiveRecord::Migration
       t.string :name
       t.string :name_by_directions
       t.integer :transport_id
+      t.string :color
       t.timestamps
     end
   end

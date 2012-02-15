@@ -6,8 +6,14 @@ TransportAdder::Application.routes.draw do
     resources :stations
   end
   
+  resources :ways, :only => [:destroy]
   
-  resources :lines
+  
+  resources :lines do
+    resources :stations
+    resources :ways, :only => [:create]
+  end
+  
   resources :stations
   resources :connections
   resources :traversals

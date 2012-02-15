@@ -3,16 +3,15 @@ require 'spec_helper'
 
 describe TransportsController do    
   
+  def valid_attributes
+    Factory.attributes_for(:metro)
+  end
+  
   describe "GET new" do
     
-    before(:each) do
-      @transport = Transport.new
-    end
-    
     it "should assign a new transport" do
-      Transport.should_receive(:new).and_return(@transport)
       get :new
-      assigns(:transport).should == @transport
+      assigns(:transport).should be_a_new(Transport)
     end
     
   end
@@ -21,7 +20,7 @@ describe TransportsController do
     
     before(:each) do
       @params = {'name' => 'name', 'twitter' => 'tw', 'web_page' => 'page'}
-      @transport = Transport.create(@params)
+      @transport = Transport.create! valid_attributes
     end
     
     it "should assing a new record to transport" do
@@ -63,45 +62,36 @@ describe TransportsController do
   
   describe "GET show" do
     
-    before(:each) do
-      @transport = Factory.stub(:metro)
-    end
-    
     it "should fetch and assign transport" do
-      Transport.should_receive(:find).with("1").and_return(@transport)
-      get :show, :id => "1"
-      assigns(:transport).should == @transport
+      transport = Transport.create! valid_attributes
+      get :show, :id => transport.id
+      assigns(:transport).should == transport
     end
     
   end
   
   describe "GET index" do
-    before(:each) do
-      @transports = [Factory.stub(:metro)]
-    end
     
     it "should fetch and assign a set of transports to transports" do
-      Transport.should_receive(:all).and_return(@transports)
+      transport = Transport.create! valid_attributes
       get :index
-      assigns(:transports).should == @transports
+      assigns(:transports).should eq([transport])
     end
+    
   end
   
   describe "GET edit" do
-    before(:each) do
-      @transport = Factory.stub(:metro)
-    end
     
     it "should fetch and assign the existing transport" do
-      Transport.should_receive(:find).with("1").and_return(@transport)
-      get :edit, :id => "1"
-      assigns(:transport).should == @transport
+      transport = Transport.create! valid_attributes
+      get :edit, :id => transport.id
+      assigns(:transport).should eq(transport)
     end
   end
   
   describe "PUT update" do
     before(:each) do
-      @transport = Factory(:metro)
+      @transport = Transport.create! valid_attributes
     end
     
     it "should fetch and assign the requested record" do
@@ -135,7 +125,21 @@ describe TransportsController do
         put :update, :id => "1", :transport => {'name' => 'params'}
         response.should render_template('edit')
       end
-      
+    end
+    
+    describe "DELETE destroy" do
+      it "destroys the requested transport" do
+        transport = Transport.create! valid_attributes
+        expect {
+          delete :destroy, :id => transport.id.to_s
+        }.to change(Transport, :count).by(-1)
+      end
+
+      it "redirects to the transports list" do
+        transport = Transport.create! valid_attributes
+        delete :destroy, :id => transport.id.to_s
+        response.should redirect_to(transports_url)
+      end
     end
     
   end

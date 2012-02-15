@@ -29,6 +29,15 @@ class TransportsController < ActionController::Base
   def edit
   end
   
+  def destroy
+    @transport = Transport.find(params[:id])
+    @transport.destroy
+
+    respond_to do |format|
+      format.html { redirect_to transports_url, :notice => I18n.t('transports.destroy.messages.done') }
+    end
+  end
+  
   def update
     if @transport.update_attributes(params[:transport])
       redirect_to @transport, :notice => I18n.t('transports.update.messages.saved')

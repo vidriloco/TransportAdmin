@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120213193713) do
+ActiveRecord::Schema.define(:version => 20120214194345) do
 
   create_table "connections", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120213193713) do
     t.string   "name"
     t.string   "name_by_directions"
     t.integer  "transport_id"
+    t.string   "color"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
@@ -45,6 +46,14 @@ ActiveRecord::Schema.define(:version => 20120213193713) do
   create_table "traversals", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ways", :force => true do |t|
+    t.string      "description"
+    t.integer     "line_id"
+    t.datetime    "created_at",                 :null => false
+    t.datetime    "updated_at",                 :null => false
+    t.line_string "content",     :limit => nil,                 :srid => 4326
   end
 
 end

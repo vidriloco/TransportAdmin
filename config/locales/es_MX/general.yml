@@ -1,5 +1,6 @@
 es_MX:
   messages:
+    destroy_confirmation: "¿Eliminar éste elemento?"
     lines:
       number:
         one: "%{number} línea"
@@ -19,3 +20,6 @@ es_MX:
       see: "Ver estaciones"
     save: "Guardar"
     edit: "Modificar"
+    delete: "Eliminar"
+    back: "Regresar"
+    add: "Agregar"

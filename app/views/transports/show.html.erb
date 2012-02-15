@@ -1,8 +1,8 @@
 <%= t('transports.show.title') %>
 
-<span class="name"><b><%= t('activerecord.attributes.transport.name') %>: </b><%= @transport.name %></span>
-<span class="twitter"><b><%= t('activerecord.attributes.transport.twitter') %>: </b>@<%= @transport.twitter %></span>
-<span class="name"><b><%= t('activerecord.attributes.transport.mode') %>: </b><%= @transport.humanized_mode %></span>
+<p class="name"><b><%= t('activerecord.attributes.transport.name') %>: </b><%= @transport.name %></p>
+<p class="twitter"><b><%= t('activerecord.attributes.transport.twitter') %>: </b>@<%= @transport.twitter %></p>
+<p class="mode"><b><%= t('activerecord.attributes.transport.mode') %>: </b><%= @transport.humanized_mode %></p>
 
 <p>
 <% if @transport.transport_mode_is?(:bike_sharing) %>
@@ -12,3 +12,4 @@
 <% end %>
 </p>
 <%= link_to t('actions.edit'), edit_transport_path(@transport) %>
+<%= button_to t('actions.delete'), transport_path(@transport), :method => :delete %>

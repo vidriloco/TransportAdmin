@@ -1,0 +1,9 @@
+<% if @line.errors.any? %>
+	<%= t('lines.create.messages.not_saved') %>
+<% end %>
+
+<h1><%= t('lines.new.title') %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t('actions.back'), lines_path %>

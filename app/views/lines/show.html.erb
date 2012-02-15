@@ -1,0 +1,13 @@
+
+<p class="transport"><b><%= t('activerecord.attributes.transport.name') %>: </b><%= @line.transport.name %></p>
+<p class="name"><b><%= t('activerecord.attributes.line.name') %>: </b><%= @line.name %></p>
+<p class="name_by_directions"><b>
+	<%= t('activerecord.attributes.line.name_by_directions') %>: </b>
+	<%= @line.name_by_directions %>
+</p>
+<p class="color"><b><%= t('activerecord.attributes.line.color') %>: </b><%= @line.color %></p>
+
+<%= render 'ways/index' %>
+
+<%= link_to 'Edit', edit_line_path(@line) %> |
+<%= link_to t('actions.back'), lines_path %>

@@ -1,0 +1,32 @@
+<%= form_for(@line) do |f| %>
+  <% if @line.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @line.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, t('activerecord.attributes.line.name') %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :name_by_directions, t('activerecord.attributes.line.name_by_directions') %><br />
+    <%= f.text_field :name_by_directions %>
+  </div>
+  <div class="field">
+    <%= f.label :color, t('activerecord.attributes.line.color') %><br />
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :transport, t('activerecord.attributes.line.transport') %><br />
+    <%= f.select :transport_id, options_from_collection_for_select(Transport.all, 'id', 'name'), {:include_blank => true} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('actions.save') %>
+  </div>
+<% end %>

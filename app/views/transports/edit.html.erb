@@ -1,4 +1,4 @@
-<% unless @transport.errors.empty? %>
+<% if @transport.errors.any? %>
 	<%= t('transports.update.messages.not_saved') %>
 <% end %>
 
