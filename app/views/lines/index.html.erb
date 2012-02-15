@@ -8,12 +8,15 @@
 		
 		<p class="section"><%= transport.name %></p>
 		
-		<% if transport.lines.empty? %>
-			<%= t('lines.index.no_records') %>
-		<% else %>
-			<% transport.lines.each do |line| %>
-				<%= render line %>
+		<% unless transport.transport_mode_is?(:bike_sharing) %>
+			<% if transport.lines.empty? %>
+				<%= t('lines.index.no_records') %>
+			<% else %>
+				<% transport.lines.each do |line| %>
+					<%= render line %>
+				<% end %>
 			<% end %>
 		<% end %>
+		
 	</div>
 <% end %>

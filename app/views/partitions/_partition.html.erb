@@ -1,0 +1,5 @@
+<div id="partition-<%= partition.id %>">
+	<p class="name"><%= link_to partition.name, partition %></p>
+	<%= button_to t('actions.delete'), partition_path(partition), :method => :delete %>
+  <%= link_to t('actions.edit'), edit_partition_path(partition) %>	
+</div>	

@@ -13,7 +13,7 @@ FactoryGirl.define do
     t.name "Metrobús"
     t.web_page "www.metrobus.df.gob.mx"
     t.twitter "Metrobus_GDF"
-    t.mode Transport.mode_for(:brt)
+    t.mode Transport.mode_for(:bus_rapid_transit)
   end
   
   factory :ecobici, :class => Transport do |t|

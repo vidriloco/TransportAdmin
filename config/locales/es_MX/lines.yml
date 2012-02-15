@@ -9,6 +9,12 @@ es_MX:
         color: "Color (hexadecimal)"
         transport: "Transporte al que pertenece"
   lines:
+    update:
+      messages:
+        saved: "La línea ha sido actualizada"
+        not_saved: "La línea no pudo ser actualizada"
+    edit:
+      title: "Modificando Línea"
     index:
       title: "Todas las lineas"
       no_records: "No hay lines registradas aún"

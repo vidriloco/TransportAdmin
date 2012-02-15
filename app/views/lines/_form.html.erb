@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :transport, t('activerecord.attributes.line.transport') %><br />
-    <%= f.select :transport_id, options_from_collection_for_select(Transport.all, 'id', 'name'), {:include_blank => true} %>
+    <%= f.select :transport_id, options_from_collection_for_select(Transport.all, 'id', 'name', @line.transport_id), {:include_blank => true} %>
   </div>
 
   <div class="actions">

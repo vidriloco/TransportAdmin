@@ -1,7 +1,8 @@
-<div id="line-<%= line.id %>" class="transport-<%= line.transport.id %>">
+<div id="line-<%= line.id %>">
 	<p class="name"><%= link_to line.name, line %></p>
 	<p class="name_by_directions"><%= line.name_by_directions %></p>
 	
-	<%= link_to t('actions.stations.add'), new_station_path %>
-  <%= link_to t('actions.stations.see'), line_stations_path(line) %>
+  <%= button_to t('actions.delete'), line_path(line), :method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
+  <%= link_to t('actions.edit'), edit_line_path(line) %>
+
 </div>

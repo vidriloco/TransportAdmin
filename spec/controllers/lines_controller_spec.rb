@@ -9,7 +9,7 @@ describe LinesController do
   describe "GET index" do
     
     it "assigns all transports as @transports" do
-      transport = Factory(:metrobus, :mode => 3)
+      transport = Factory(:metrobus)
       get :index
       assigns(:transports).should eq([transport])
     end

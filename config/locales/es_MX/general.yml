@@ -1,6 +1,10 @@
 es_MX:
   messages:
     destroy_confirmation: "¿Eliminar éste elemento?"
+    partitions:
+      number:
+        one: "%{number} partición"
+        other: "%{number} particiones"
     lines:
       number:
         one: "%{number} línea"
@@ -15,9 +19,13 @@ es_MX:
     lines:
       add: "Agregar nueva línea"
       see: "Ver líneas"
+    polygons:
+      see: "Ver polígonos"
     stations:
       add: "Agregar nueva estación"
       see: "Ver estaciones"
+    partitions:
+      see: "Ver particiones"
     save: "Guardar"
     edit: "Modificar"
     delete: "Eliminar"

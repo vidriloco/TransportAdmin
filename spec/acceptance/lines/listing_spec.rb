@@ -4,67 +4,58 @@ feature 'Listing of lines: '  do
   
   before(:each) do
     @metro = Factory(:metro)
+    @metrobus = Factory(:metrobus)
+    @ecobici = Factory(:ecobici)
   end
   
-  describe "having no lines registered when visiting the lines index page for it's transport" do
-    
-    before(:each) do
-      visit transport_lines_path(@metro)
-      sections_menu_should_be_visible
-
-      page.should have_content I18n.t('lines.index.title')
-      find_link I18n.t('actions.lines.add')
-    end
-    
-    it "should show a 'no lines registered' message" do
-      page.should have_content I18n.t('lines.index.no_records')
-    end
-  end
-  
-  describe "having two lines registered" do
+  describe "having two lines registered for metro, one station for ecobici and none for metrobus" do
     
     before(:each) do
       @bl=Factory(:blue_line, :transport_id => @metro.id)
       @rl=Factory(:red_line, :transport_id => @metro.id)
+      @ec=Factory(:partition, :transport_id => @ecobici.id)
     end
     
-    describe "when visiting the index page for it's transport" do
+    describe "when visiting the index page" do
     
       before(:each) do
-        visit transport_lines_path(@metro)
+        visit lines_path
         sections_menu_should_be_visible
     
         page.should have_content I18n.t('lines.index.title')
         find_link I18n.t('actions.lines.add')
       end  
     
-      it "should list them" do
-        within("#line-#{@bl.id}") do
-          find_link @bl.name
-          page.should have_content @bl.name_by_directions
+      scenario "should list them grouped by transport", :js => true do
+        
+        within("#transport-#{@metro.id}") do
+          page.should have_content @metro.name
+        
+          within("#line-#{@bl.id}") do
+            find_link @bl.name
+            page.should have_content @bl.name_by_directions
           
-          find_link I18n.t('actions.stations.add')
-          find_link I18n.t('actions.stations.see')
+            find_button I18n.t('actions.delete')
+            find_link I18n.t('actions.edit')
+          end
+        
+          within("#line-#{@rl.id}") do
+            find_link @rl.name
+            page.should have_content @rl.name_by_directions
+          
+            find_button I18n.t('actions.delete')
+            find_link I18n.t('actions.edit')
+          end
+        end 
+        
+        within("#transport-#{@metrobus.id}") do
+          page.should have_content @metrobus.name
+        
+          page.should have_content I18n.t('lines.index.no_records')
         end
         
-        within("#line-#{@rl.id}") do
-          find_link @rl.name
-          page.should have_content @rl.name_by_directions
-          
-          find_link I18n.t('actions.stations.add')
-          find_link I18n.t('actions.stations.see')
-        end
       end
     end
   end
   
-  describe "having registered an additional transport" do
-    
-    before(:each) do
-      @metrobus = Factory(:metrobus)
-    end
-    
-    it "should let changing "
-    
-  end
 end

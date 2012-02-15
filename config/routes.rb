@@ -3,8 +3,12 @@ TransportAdder::Application.routes.draw do
   # first created -> highest priority.
   resources :transports do
     resources :lines
-    resources :stations
+    resources :partitions
   end
+  
+  resources :partitions
+  resources :lines
+  resources :stations
   
   resources :ways, :only => [:destroy]
   
@@ -14,7 +18,6 @@ TransportAdder::Application.routes.draw do
     resources :ways, :only => [:create]
   end
   
-  resources :stations
   resources :connections
   resources :traversals
   # Sample of regular route:

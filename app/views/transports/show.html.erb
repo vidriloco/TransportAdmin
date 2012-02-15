@@ -6,10 +6,10 @@
 
 <p>
 <% if @transport.transport_mode_is?(:bike_sharing) %>
-	<%= count_humanized_with('messages.stations.number', @transport.stations.count).html_safe %>
+	<%= count_humanized_with('messages.stations.number', @transport.partitions.count).html_safe %>
 <% else %>
 	<%= count_humanized_with('messages.lines.number', @transport.lines.count).html_safe %>
 <% end %>
 </p>
 <%= link_to t('actions.edit'), edit_transport_path(@transport) %>
-<%= button_to t('actions.delete'), transport_path(@transport), :method => :delete %>
+<%= button_to t('actions.delete'), transport_path(@transport), :method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>

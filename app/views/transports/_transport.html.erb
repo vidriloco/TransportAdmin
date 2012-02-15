@@ -3,12 +3,10 @@
 	<span class="twitter"><%= transport.twitter %></span>
 	
 	<% if transport.transport_mode_is?(:bike_sharing) %>
-		<%= count_humanized_with 'messages.stations.number', transport.stations.count %>
-		<%= link_to t('actions.stations.add'), new_transport_station_path(transport) %>
-		<%= link_to t('actions.stations.see'), transport_stations_path(transport) %>
+		<%= count_humanized_with('messages.partitions.number', transport.partitions.count).html_safe %>
+		<%= link_to t('actions.partitions.see'), transport_partitions_path(transport) %>
 	<% else %>
-		<%= count_humanized_with 'messages.lines.number', transport.lines.count %>
-		<%= link_to t('actions.lines.add'), new_transport_line_path(transport) %>
+		<%= count_humanized_with('messages.lines.number', transport.lines.count).html_safe %>
 		<%= link_to t('actions.lines.see'), transport_lines_path(transport) %>
 	<% end %>
 </div>

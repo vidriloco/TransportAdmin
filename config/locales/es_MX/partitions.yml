@@ -1,0 +1,17 @@
+es_MX:
+  activerecord:
+    models:
+      partition: "Partición"
+    attributes:
+      partition:
+        name: "Nombre"
+  partitions:
+    index:
+      title: "Todas las particiones"
+      no_records: "No hay particiones registradas aún"
+    create:
+      messages:
+        saved: "La partición ha sido guardada"
+        not_saved: "La partición no pudo ser guardada"
+    new:
+      title: "Nueva Partición"

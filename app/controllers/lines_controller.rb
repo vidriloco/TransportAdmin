@@ -1,7 +1,7 @@
 class LinesController < ApplicationController
 
   def index
-    @transports = Transport.find(:all, :include => [:lines, :stations])
+    @transports = Transport.find(:all, :include => [:lines, :partitions])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +45,7 @@ class LinesController < ApplicationController
 
     respond_to do |format|
       if @line.update_attributes(params[:line])
-        format.html { redirect_to @line, notice: 'Line was successfully updated.' }
+        format.html { redirect_to @line, :notice => I18n.t('lines.update.messages.saved') }
       else
         format.html { render action: "edit" }
       end
@@ -57,7 +57,7 @@ class LinesController < ApplicationController
     @line.destroy
 
     respond_to do |format|
-      format.html { redirect_to lines_url }
+      format.html { redirect_to lines_url, :notice => I18n.t('lines.destroy.messages.done') }
     end
   end
 end

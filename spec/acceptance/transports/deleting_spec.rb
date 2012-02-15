@@ -14,8 +14,10 @@ feature 'Deleting an existent transport: '  do
       page.should have_content I18n.t('transports.show.title')
     end  
     
-    scenario "I have to go to it's details page for delete it" do
+    scenario "I have to go to it's details page for delete it", :js => true do
       click_on I18n.t('actions.delete')
+      page.driver.browser.switch_to.alert.accept
+      
       page.current_path.should == transports_path
       page.should have_content I18n.t('transports.destroy.messages.done')
       page.should have_content I18n.t('transports.index.no_records')

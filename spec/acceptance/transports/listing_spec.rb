@@ -23,7 +23,8 @@ feature 'Listing of transports: '  do
       @metro=Factory(:metro)
       Factory.build(:blue_line, :transport_id => @metro.id)
       Factory.build(:red_line, :transport_id => @metro.id)
-      @ecobici=Factory(:ecobici, :stations => [Factory.build(:cyclostation)])
+      @ecobici=Factory(:ecobici)
+      Factory.build(:partition, :transport_id => @ecobici.id)
     end
     
     describe "when visiting the index page" do
@@ -42,17 +43,15 @@ feature 'Listing of transports: '  do
           page.should have_content I18n.t('messages.lines.number.other', :number => @metro.lines.count)
           page.should have_content @metro.twitter
           
-          find_link I18n.t('actions.lines.add')
           find_link I18n.t('actions.lines.see')
         end
         
         within("#transport-#{@ecobici.id}") do
           find_link @ecobici.name
-          page.should have_content I18n.t('messages.stations.number.one', :number => @ecobici.stations.count) 
+          page.should have_content I18n.t('messages.partitions.number.other', :number => @ecobici.partitions.count) 
           page.should have_content @ecobici.twitter
           
-          find_link I18n.t('actions.stations.add')
-          find_link I18n.t('actions.stations.see')
+          find_link I18n.t('actions.partitions.see')
         end
       end
     end

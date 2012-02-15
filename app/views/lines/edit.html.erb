@@ -1,4 +1,8 @@
-<h1>Editing line</h1>
+<% if @line.errors.any? %>
+	<%= t('lines.update.messages.not_saved') %>
+<% end %>
+
+<h1><%= t('lines.edit.title') %></h1>
 
 <%= render 'form' %>
 
