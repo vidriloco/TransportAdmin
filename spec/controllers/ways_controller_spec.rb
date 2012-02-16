@@ -43,7 +43,7 @@ describe WaysController do
       it "re-renders the 'new' template" do
         Way.any_instance.stub(:save).and_return(false)
         post :create, :line_id => "1", :way => valid_attributes
-        response.body.should be_blank
+        response.should be_redirect
       end
     end
   end

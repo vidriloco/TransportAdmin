@@ -2,11 +2,8 @@ class WaysController < ActionController::Base
   def create
     @way=Way.new_with_filtering(params[:way].merge(:line_id => params[:line_id]))
     
-    if @way.save
-      redirect_to @way.line, :notice => t('ways.create.messages.saved')
-    else
-      render :nothing => true
-    end
+    message = @way.save ? { :notice => t('ways.create.messages.saved') } : { :alert => t('ways.create.messages.not_saved') }
+    redirect_to @way.line, message
   end
   
   def destroy

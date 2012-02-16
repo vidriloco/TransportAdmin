@@ -1,6 +1,8 @@
 class Way < ActiveRecord::Base
   belongs_to :line
   
+  validates_presence_of :content, :description
+  
   def humanized_content
     return "---" if self.content.nil?
     vector_length = self.content.length

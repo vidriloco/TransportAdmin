@@ -238,3 +238,7 @@ a:hover {
 .sub-header h1 {
 	font-size: 20px;
 }
+
+.new-way-form {
+	display: none;
+}

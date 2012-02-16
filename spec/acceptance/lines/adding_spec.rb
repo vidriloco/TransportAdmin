@@ -35,6 +35,8 @@ feature 'Adding a new line: '  do
       page.should have_content I18n.t('ways.index.no_records')
       
       page.should have_content I18n.t('ways.new.title')
+      
+      click_on I18n.t('ways.new.title')
       fill_in "way_content", :with => "-99.13955021914663,19.34375187346597,0 -99.14146374212993,19.34383717087054,0"
       fill_in "way_description", :with => "Curva conectando x punto con y punto"
       click_on I18n.t('actions.add')
@@ -53,6 +55,22 @@ feature 'Adding a new line: '  do
       page.should have_content I18n.t('ways.destroy.messages.done')
       page.should_not have_content "Curva conectando x punto con y punto"
       page.should have_content I18n.t('ways.index.no_records')
+    end
+    
+    scenario "should let me save a new line registry but NOT let me add empty paths to it", :js => true do
+      fill_in "line_name", :with => "Línea 3"
+      fill_in "line_name_by_directions", :with => "Indios Verdes - Universidad"
+      fill_in "line_color", :with => "#ffffff"
+      
+      select @metro.name, :from => "line_transport_id"
+    
+      click_on I18n.t('actions.save') 
+      
+      click_on I18n.t('ways.new.title')
+      fill_in "way_content", :with => ""
+      fill_in "way_description", :with => ""
+      click_on I18n.t('actions.add')
+      page.should have_content I18n.t('ways.create.messages.not_saved')
       
     end
   

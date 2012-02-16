@@ -13,6 +13,7 @@ es_MX:
     create:
       messages:
         saved: "El trazo ha sido guardado"
+        not_saved: "El trazo no fue guardado"
     index: 
       title: "Trazos para esta línea"
       no_records: "No hay trazos para esta línea"

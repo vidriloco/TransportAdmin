@@ -5,12 +5,14 @@
 		<%= t('activerecord.attributes.transport.name') %>: </span>
 		<%= @transport.name %>
 	</p>
-
-	<p><span class="attr-display">
-		<%= t('activerecord.attributes.transport.twitter') %>: </span>
-		<span class="twitter">@<%= @transport.twitter %></span>
-	</p>
-
+	
+	<% unless @transport.twitter.blank? %>
+		<p><span class="attr-display">
+			<%= t('activerecord.attributes.transport.twitter') %>: </span>
+			<span class="twitter">@<%= @transport.twitter %></span>
+		</p>
+	<% end %>
+	
 	<p><span class="mode attr-display">
 		<%= t('activerecord.attributes.transport.mode') %>: </span>
 		<%= @transport.humanized_mode %>

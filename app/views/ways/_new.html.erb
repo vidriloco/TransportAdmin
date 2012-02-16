@@ -1,11 +1,13 @@
-<h3><%= t('ways.new.title') %></h3>
+<h3><span class="sign">+</span> <%= link_to t('ways.new.title'), 'javascript:void(0);', :class => 'way-form-toggle' %></h3>
 
-<%= form_for [@line, Way.new] do |f| %>
-	<div class="simple-form">
-		<%= f.label :content, t('activerecord.attributes.way.content') %>
-		<%= f.text_area :content, :id => "way_content", :cols => 90, :rows => 3 %>
-		<%= f.label :description, t('activerecord.attributes.way.description') %>
-		<%= f.text_field :description, :id => "way_description", :size => 60 %>
-	</div>
-	<%= f.submit t('actions.add') %>
-<% end %>
+<div class="new-way-form">
+	<%= form_for [@line, Way.new] do |f| %>
+		<div class="simple-form">
+			<%= f.label :content, t('activerecord.attributes.way.content') %>
+			<%= f.text_area :content, :id => "way_content", :cols => 90, :rows => 3 %>
+			<%= f.label :description, t('activerecord.attributes.way.description') %>
+			<%= f.text_field :description, :id => "way_description", :size => 60 %>
+		</div>
+		<%= f.submit t('actions.add') %>
+	<% end %>
+</div>
