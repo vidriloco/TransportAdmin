@@ -1,23 +1,11 @@
 <div id="transport-<%= transport.id %>" class="listed-block shadow-right-bottom rounded-8">
 	<span class="name left"><%= link_to transport.name, transport %></span>
 	
-	<% unless transport.twitter.blank? %>
-		<span class="twitter separated">@<%= transport.twitter %></span>
-	<% end %>
-	
+	<span class="right">
 	<% if transport.transport_mode_is?(:bike_sharing) %>
-		<span class="separated">
-			<%= count_humanized_with('messages.partitions.number', transport.partitions.count).html_safe %>
-		</span>
-		<span class="right">
 			<%= link_to t('actions.partitions.see'), transport_partitions_path(transport) %>
-		</span>
 	<% else %>
-		<span class="separated">
-			<%= count_humanized_with('messages.lines.number', transport.lines.count).html_safe %>
-		</span>
-		<span class="right">
 			<%= link_to t('actions.lines.see'), transport_lines_path(transport) %>
-		</span>
 	<% end %>
+	</span>
 </div>

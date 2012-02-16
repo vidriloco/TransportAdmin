@@ -1,0 +1,20 @@
+es_MX:
+  activerecord:
+    models:
+      station: "Estación"
+    attributes:
+      station:
+        name: "Nombre"
+  stations:
+    index:
+      title: "Estaciones de esta línea"
+      no_records: "No hay estaciones registradas aún"
+    create:
+      messages:
+        saved: "La partición ha sido guardada"
+        not_saved: "La partición no pudo ser guardada"
+    new:
+      title: "Nueva Estación"
+      tips:
+        lat: "(19.22....)"
+        lon: "(-99.20....)"

@@ -6,15 +6,15 @@ TransportAdder::Application.routes.draw do
     resources :partitions
   end
   
+  get "/agroupers/:agrouper_id/stations/new" => 'stations#new', :as => "new_agrouper_station"
+  
   resources :partitions
-  resources :lines
   resources :stations
   
   resources :ways, :only => [:destroy]
   
   
   resources :lines do
-    resources :stations
     resources :ways, :only => [:create]
   end
   

@@ -1,15 +1,15 @@
 <%= form_for(@line) do |f| %>
 		<div class="simple-form">
-    	<%= f.label :name, t('activerecord.attributes.line.name') %><br />
+    	<%= f.label :name, t('activerecord.attributes.line.name') %>
 	    <%= f.text_field :name %>
 
-	    <%= f.label :name_by_directions, t('activerecord.attributes.line.name_by_directions') %><br />
+	    <%= f.label :name_by_directions, t('activerecord.attributes.line.name_by_directions') %>
 	    <%= f.text_field :name_by_directions %>
 
-	    <%= f.label :color, t('activerecord.attributes.line.color') %><br />
+	    <%= f.label :color, t('activerecord.attributes.line.color') %>
 	    <%= f.text_field :color %>
 
-	    <%= f.label :transport, t('activerecord.attributes.line.transport') %><br />
+	    <%= f.label :transport, t('activerecord.attributes.line.transport') %>
 	    <%= f.select :transport_id, options_from_collection_for_select(Transport.all, 'id', 'name', @line.transport_id), {:include_blank => true} %>
 		</div>
     <%= f.submit t('actions.save') %>

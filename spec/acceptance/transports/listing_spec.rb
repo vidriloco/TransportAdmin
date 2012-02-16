@@ -40,16 +40,12 @@ feature 'Listing of transports: '  do
       it "should list them" do
         within("#transport-#{@metro.id}") do
           find_link @metro.name
-          page.should have_content I18n.t('messages.lines.number.other', :number => @metro.lines.count)
-          page.should have_content @metro.twitter
           
           find_link I18n.t('actions.lines.see')
         end
         
         within("#transport-#{@ecobici.id}") do
           find_link @ecobici.name
-          page.should have_content I18n.t('messages.partitions.number.other', :number => @ecobici.partitions.count) 
-          page.should have_content @ecobici.twitter
           
           find_link I18n.t('actions.partitions.see')
         end

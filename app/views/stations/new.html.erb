@@ -1,0 +1,14 @@
+<h1><%= t('stations.new.title') %></h1>
+
+<div class="sub-header right">
+	<h1><span class="transport"><%= @agrouper.transport.name %></span> - <span class="line"><%= @agrouper.name %></span> </h1>
+	<span class="name-by-directions"><%= @agrouper.name_by_directions %></span>
+</div>
+
+<%= form_for @station do |f| %>
+	<%= f.label :name, t('activerecord.attributes.station.name') %>
+	<%= f.text_field :name, :id => "station_name" %>
+	<%= f.label :coordinates, t('activerecord.attributes.coordinates.name') %>
+	<%= t('stations.new.tips.lat')%> <%= f.text_field :lat, :id => "station_lat" %>
+	<%= t('stations.new.tips.lon')%> <%= f.text_field :lon, :id => "station_lat" %>
+<% end %>

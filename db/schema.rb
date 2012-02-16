@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(:version => 20120215064602) do
 
   create_table "stations", :force => true do |t|
     t.string   "name"
-    t.integer  "transport_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "agrouper_id"
+    t.string   "agrouper_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "transports", :force => true do |t|

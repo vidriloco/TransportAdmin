@@ -8,6 +8,10 @@
 	<%= render 'ways/index' %>
 </div>
 
+<div class="stations">
+	<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
+</div>
+
 <% content_for :footer do %>
 	<%= link_to t('actions.back'), lines_path %>
 	<%= link_to t('actions.edit'), edit_line_path(@line), :class => "to-right modify" %>

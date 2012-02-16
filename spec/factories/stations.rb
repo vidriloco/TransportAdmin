@@ -6,4 +6,16 @@ FactoryGirl.define do
     t.name "Any cyclostation"
   end
   
+  factory :observatorio, :class => Station do |t|
+    t.name "Observatorio"
+  end
+  
+  factory :tacubaya, :class => Station do |t|
+    t.name "Tacubaya"
+  end
+  
+  factory :station do |t|
+    t.name "Station example"
+  end
+  
 end
