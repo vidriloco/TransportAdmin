@@ -8,9 +8,22 @@
 </head>
 <body>
 
-<div id="header"><%= render 'shared/menu' %></div>
-<div id="notifications"><%= flash[:notice] %></div>
-<%= yield %>
+	<div id="header"><%= render 'shared/menu' %></div>
+
+	<div id="notifications" class="message rounded-5"><%= flash[:notice] %></div>
+	<div id="alerts" class="message rounded-5"><%= flash[:alert] || yield(:alerts) %></div>
+	
+	<div id="content" class="shadow-on-borders">
+		<div class="inter">
+			<%= yield %>
+		</div>
+		
+		<div class="inter-footer">
+			<%= yield(:footer) %>
+		</div>
+	</div>
+
 
 </body>
 </html>
+

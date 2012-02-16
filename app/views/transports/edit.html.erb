@@ -2,8 +2,15 @@
 	<%= t('transports.update.messages.not_saved') %>
 <% end %>
 
-<%= t('transports.edit.title') %>
+<h1><%= t('transports.edit.title') %></h1>
 
 <%= form_for @transport, :method => :put do |f| %>
-	<%= render :partial => 'form', :locals => {:f => f} %>
+	<div class="simple-form">
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	</div>
+	<%= f.submit t('actions.save'), :class => "submit-button" %>
+<% end %>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), transports_path %>
 <% end %>

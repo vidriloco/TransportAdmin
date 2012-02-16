@@ -13,3 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+var delayMessageTime = 3500;
+$(document).ready(function() {
+	if(!$('#notifications').is(':empty')) {
+		$('#notifications').fadeIn('slow').delay(delayMessageTime).fadeOut('slow');
+	}
+	
+	if(!$('#alerts').is(':empty')) {
+		$('#alerts').fadeIn('slow').delay(delayMessageTime).fadeOut('slow');
+	}
+	
+	if($.isDefinedInDom('.color-h')) {
+		$('.sub-header').css('background-color', $('.color-h').text());
+	}
+});

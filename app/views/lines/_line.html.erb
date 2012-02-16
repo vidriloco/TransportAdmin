@@ -1,8 +1,11 @@
-<div id="line-<%= line.id %>">
-	<p class="name"><%= link_to line.name, line %></p>
-	<p class="name_by_directions"><%= line.name_by_directions %></p>
+<div id="line-<%= line.id %>" class="listed-block shadow-right-bottom rounded-8">
+	<span class="name left"><%= link_to line.name, line %></span>
+	<span class="name_by_directions middle"><%= line.name_by_directions %></span>
 	
-  <%= button_to t('actions.delete'), line_path(line), :method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
-  <%= link_to t('actions.edit'), edit_line_path(line) %>
-
+	<span class="right inlined">
+		<%= button_to t('actions.delete'), line_path(line), 
+				:method => :delete, 
+				:confirm => I18n.t('messages.destroy_confirmation') %>
+	  <%= link_to t('actions.edit'), edit_line_path(line) %>
+	</span>
 </div>

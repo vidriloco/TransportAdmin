@@ -1,15 +1,41 @@
-<%= t('transports.show.title') %>
+<h1><%= t('transports.show.title') %></h1>
 
-<p class="name"><b><%= t('activerecord.attributes.transport.name') %>: </b><%= @transport.name %></p>
-<p class="twitter"><b><%= t('activerecord.attributes.transport.twitter') %>: </b>@<%= @transport.twitter %></p>
-<p class="mode"><b><%= t('activerecord.attributes.transport.mode') %>: </b><%= @transport.humanized_mode %></p>
+<div class="show block">
+	<p><span class="name attr-display">
+		<%= t('activerecord.attributes.transport.name') %>: </span>
+		<%= @transport.name %>
+	</p>
 
-<p>
-<% if @transport.transport_mode_is?(:bike_sharing) %>
-	<%= count_humanized_with('messages.stations.number', @transport.partitions.count).html_safe %>
-<% else %>
-	<%= count_humanized_with('messages.lines.number', @transport.lines.count).html_safe %>
-<% end %>
-</p>
-<%= link_to t('actions.edit'), edit_transport_path(@transport) %>
-<%= button_to t('actions.delete'), transport_path(@transport), :method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
+	<p><span class="attr-display">
+		<%= t('activerecord.attributes.transport.twitter') %>: </span>
+		<span class="twitter">@<%= @transport.twitter %></span>
+	</p>
+
+	<p><span class="mode attr-display">
+		<%= t('activerecord.attributes.transport.mode') %>: </span>
+		<%= @transport.humanized_mode %>
+	</p>
+
+	<p><span class="lines-stations attr-display">
+	<% if @transport.transport_mode_is?(:bike_sharing) %>
+		<%= t('activerecord.attributes.transport.partitions') %>:
+		</span>
+		<%= count_humanized_with('messages.partitions.number', @transport.partitions.count).html_safe %>
+	
+	<% else %>
+		<%= t('activerecord.attributes.transport.lines')%>:
+		</span>
+		<%= count_humanized_with('messages.lines.number', @transport.lines.count).html_safe %>
+	<% end %>
+	</p>
+
+	<% content_for :footer do %>
+		<%= link_to t('actions.back'), transports_path %>
+		
+		<div class="to-right inlined">
+			<%= link_to t('actions.edit'), edit_transport_path(@transport), :class => "modify" %>
+			<%= button_to t('actions.delete'), transport_path(@transport), 
+				:method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
+		</div>
+	<% end %>
+</div>

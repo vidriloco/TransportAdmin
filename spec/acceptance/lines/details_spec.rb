@@ -15,7 +15,7 @@ feature 'Reviewing the details of a line: '  do
       page.should have_content @ecobici.name
       page.should have_content @ecobici.twitter
       page.should have_content @ecobici.humanized_mode
-      page.should have_content "0 estaciones"
+      page.should have_content "0 particiones"
       
       find_link I18n.t('actions.edit')
     end

@@ -1,22 +1,23 @@
 <h1><%= t('lines.index.title') %></h1>
 
-<%= link_to t('actions.lines.add'), new_line_path %>
+<p class="section-button"><%= link_to t('actions.lines.add'), new_line_path %></p>
+
 
 <% @transports.each  do |transport| %>
 	
 	<div id="transport-<%= transport.id %>">
-		
-		<p class="section"><%= transport.name %></p>
-		
 		<% unless transport.transport_mode_is?(:bike_sharing) %>
-			<% if transport.lines.empty? %>
-				<%= t('lines.index.no_records') %>
-			<% else %>
-				<% transport.lines.each do |line| %>
-					<%= render line %>
+			<p class="section-name"><%= transport.name %></p>
+			<div class="main-content block">
+				<% if transport.lines.empty? %>
+					<%= t('lines.index.no_records') %>
+				<% else %>
+					<% transport.lines.each do |line| %>
+						<%= render line %>
+					<% end %>
 				<% end %>
-			<% end %>
+			</div>
 		<% end %>
-		
 	</div>
 <% end %>
+

@@ -17,7 +17,7 @@ es_MX:
       title: "Modificando Línea"
     index:
       title: "Todas las lineas"
-      no_records: "No hay lines registradas aún"
+      no_records: "No hay lineas registradas aún"
     create:
       messages:
         saved: "Línea ha sido guardada"

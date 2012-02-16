@@ -11,3 +11,230 @@
  *= require_self
  *= require_tree .
 */
+html { background-color:#C9E1F0 }
+
+body {
+	width:850px;
+	margin:0 auto;
+	margin-top:30px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.hidden {
+	display:none;
+}
+
+.to-right {
+	float: right;
+}
+
+.shadow-on-borders {
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px #888;
+	box-shadow: 0 0 5px #888;
+}
+
+.shadow-right-bottom {
+	-moz-box-shadow: 0 1px 3px #CBCBCB;
+	-webkit-box-shadow: 0 1px 3px #CBCBCB;
+	box-shadow: 0 1px 3px #CBCBCB;
+}
+
+.rounded-5 {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+.rounded-8 {
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+}
+
+.inlined * {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#header {
+	width:850px;
+	height:30px;
+}
+
+.message {
+	margin-top: 10px;
+	font-weight: bold;
+	width:800px;
+	padding: 6px 20px;
+	display: none;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#notifications {
+	background-color: #529965;
+	color: #B1E1BD;
+}
+
+#alerts {
+	background-color: #99413E;
+	color: #E1878D;
+}
+
+#content { 
+	width:850px;	
+	margin-top:-20px;
+	background-color: white;
+}
+
+.inter {
+	margin: 30px;
+}
+
+.inter h1 {
+	padding-top: 40px;
+}
+
+.inter-footer {
+	margin-bottom: 0px;
+	background-color: #696969;
+	padding: 10px;
+	font-weight: bold;
+}
+
+.inter-footer a {
+	color: #CDCDCD;
+}
+
+.inter-footer a.modify {
+	color: black;
+}
+
+.main-content {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.section-button {
+	position: relative;
+	top: -30px;
+	text-align: right;
+}
+
+.section-button a:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+.section-button a {
+	text-decoration: none;
+	color: #696969;
+	font-weight: bold;
+}
+
+.sections {
+	float: right;
+}
+
+.sections a:hover {
+	background-color:#FFF;
+}
+
+.sections a {
+	padding: 10px;
+	background-color: #DFECF2;
+	font-weight: bold;
+	font-size: 13px;
+	text-decoration: none;
+	color: black;
+}
+
+.simple-form:hover {
+	background-color: #F2F2F2;
+	border: 1px solid #E2E2E2;
+}
+
+.simple-form {
+	padding: 15px;
+	background-color: #F6F6F6;
+	border: 1px solid #F6F6F6;
+	margin-bottom: 10px;
+}
+
+.simple-form label {
+	display: block;
+	font-weight: bold;
+	color:#454545;
+	margin-top: 10px;
+	margin-bottom: 3px;
+}
+
+.attr-display {
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.block {
+	margin-top: 30px;
+}
+
+.listed-block:hover {
+	background-color: #B59CE9;
+	border: 2px solid #7E5BA9;
+}
+
+.listed-block {
+	background-color: #E9E9E9;
+	border: 2px solid #A9A9A9;
+	padding: 12px;
+	margin-bottom: 10px;
+}
+
+.listed-block a {
+	color: #585858;
+}
+
+.listed-block .separated {
+	margin-right: 50px;
+}
+
+.listed-block .left {
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+}
+
+.listed-block .right {
+	float: right;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.twitter {
+	font-weight: bold;
+	color:#516DC0;
+}
+
+.section-name {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.sub-header {
+	width: 300px;
+	padding: 5px;
+	background-color: #B7F6C5;
+	text-align: center;
+}
+
+.sub-header h1 {
+	font-size: 20px;
+}

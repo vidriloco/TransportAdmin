@@ -1,9 +1,11 @@
 <% if @line.errors.any? %>
-	<%= t('lines.create.messages.not_saved') %>
+	<% content_for :alerts do %>
+		<%= t('lines.create.messages.not_saved') %>
+	<% end %>
 <% end %>
 
 <h1><%= t('lines.new.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to t('actions.back'), lines_path %>
+<%= link_to t('actions.back'), lines_path, :class => "back-link" %>

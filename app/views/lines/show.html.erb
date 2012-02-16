@@ -1,13 +1,14 @@
+<div class="hidden color-h"><%= @line.color %></div>
+<div class="sub-header">
+	<h1><span class="transport"><%= @line.transport.name %></span> - <span class="line"><%= @line.name %></span> </h1>
+	<span class="name-by-directions"><%= @line.name_by_directions %></span>
+</div>
 
-<p class="transport"><b><%= t('activerecord.attributes.transport.name') %>: </b><%= @line.transport.name %></p>
-<p class="name"><b><%= t('activerecord.attributes.line.name') %>: </b><%= @line.name %></p>
-<p class="name_by_directions"><b>
-	<%= t('activerecord.attributes.line.name_by_directions') %>: </b>
-	<%= @line.name_by_directions %>
-</p>
-<p class="color"><b><%= t('activerecord.attributes.line.color') %>: </b><%= @line.color %></p>
+<div class="ways">
+	<%= render 'ways/index' %>
+</div>
 
-<%= render 'ways/index' %>
-
-<%= link_to 'Edit', edit_line_path(@line) %> |
-<%= link_to t('actions.back'), lines_path %>
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), lines_path %>
+	<%= link_to t('actions.edit'), edit_line_path(@line), :class => "to-right modify" %>
+<% end %>

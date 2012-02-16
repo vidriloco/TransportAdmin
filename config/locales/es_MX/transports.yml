@@ -4,6 +4,8 @@ es_MX:
       transport: "Transporte"
     attributes:
       transport:
+        lines: "Número de líneas"
+        partitions: "Número de particiones"
         name: "Nombre"
         mode: "Tipo según modo del transporte"
         web_page: "Página web"

@@ -28,6 +28,12 @@ feature 'Listing of lines: '  do
     
       scenario "should list them grouped by transport", :js => true do
         
+        within("#transport-#{@metrobus.id}") do
+          page.should have_content @metrobus.name
+        
+          page.should have_content I18n.t('lines.index.no_records')
+        end
+        
         within("#transport-#{@metro.id}") do
           page.should have_content @metro.name
         
@@ -46,14 +52,7 @@ feature 'Listing of lines: '  do
             find_button I18n.t('actions.delete')
             find_link I18n.t('actions.edit')
           end
-        end 
-        
-        within("#transport-#{@metrobus.id}") do
-          page.should have_content @metrobus.name
-        
-          page.should have_content I18n.t('lines.index.no_records')
         end
-        
       end
     end
   end

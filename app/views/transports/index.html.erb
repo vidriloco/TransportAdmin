@@ -1,9 +1,11 @@
-<%= t('transports.index.title') %>
+<h1><%= t('transports.index.title') %></h1>
 
-<%= link_to t('actions.transports.add'), new_transport_path %>
+<p class="section-button"><%= link_to t('actions.transports.add'), new_transport_path %></p>
 
-<% if @transports.empty? %>
-	<%= t('transports.index.no_records') %>
-<% else %>
-	<%= render @transports %>
-<% end %>
+<div class="main-content">
+	<% if @transports.empty? %>
+		<%= t('transports.index.no_records') %>
+	<% else %>
+		<%= render @transports %>
+	<% end %>
+</div>

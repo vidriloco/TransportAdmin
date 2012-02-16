@@ -3,7 +3,7 @@ es_MX:
     models:
       way: "Trazo"
     attributes:
-      line:
+      way:
         content: "Lista de coordenadas"
         description: "Descripción"
   ways:

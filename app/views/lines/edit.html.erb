@@ -1,10 +1,13 @@
 <% if @line.errors.any? %>
-	<%= t('lines.update.messages.not_saved') %>
+	<%= content_for :alerts do %>
+		<%= t('lines.update.messages.not_saved') %>
+	<% end %>
 <% end %>
 
 <h1><%= t('lines.edit.title') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @line %> |
-<%= link_to 'Back', lines_path %>
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), :back %>
+<% end %>

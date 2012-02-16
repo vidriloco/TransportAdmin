@@ -1,9 +1,18 @@
 <% if @transport.errors.any? %>
-	<%= t('transports.create.messages.not_saved') %>
+	<% content_for :alerts do %>
+		<%= t('transports.create.messages.not_saved') %>
+	<% end %>
 <% end %>
 
 <h1><%= t('transports.new.title') %></h1>
 
 <%= form_for @transport do |f| %>
-	<%= render :partial => 'form', :locals => {:f => f} %>
+	<div class="simple-form">
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	</div>
+	<%= f.submit t('actions.save'), :class => "submit-button" %>
+<% end %>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), transports_path %>
 <% end %>
