@@ -4,9 +4,15 @@
 	<% end %>
 <% end %>
 
-<h1><%= t('lines.edit.title') %></h1>
+<% content_for :header do %>
+	<%= t('lines.edit.title') %>
+<% end %>
 
-<%= render 'form' %>
+<br/>
+
+<div class="block">
+	<%= render 'form' %>
+</div>
 
 <% content_for :footer do %>
 	<%= link_to t('actions.back'), :back %>

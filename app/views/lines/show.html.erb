@@ -4,12 +4,14 @@
 	<span class="name-by-directions"><%= @line.name_by_directions %></span>
 </div>
 
-<div class="ways">
-	<%= render 'ways/index' %>
-</div>
+<div class="block">
+	<div class="ways subsection">
+		<%= render 'ways/index' %>
+	</div>
 
-<div class="stations">
-	<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
+	<div class="stations subsection">
+		<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
+	</div>
 </div>
 
 <% content_for :footer do %>

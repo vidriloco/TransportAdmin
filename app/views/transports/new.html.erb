@@ -4,14 +4,20 @@
 	<% end %>
 <% end %>
 
-<h1><%= t('transports.new.title') %></h1>
-
-<%= form_for @transport do |f| %>
-	<div class="simple-form">
-		<%= render :partial => 'form', :locals => {:f => f} %>
-	</div>
-	<%= f.submit t('actions.save'), :class => "submit-button" %>
+<% content_for :header do %>
+	<%= t('transports.new.title') %>
 <% end %>
+
+<br/>
+
+<div class="block">
+	<%= form_for @transport do |f| %>
+		<div class="simple-form">
+			<%= render :partial => 'form', :locals => {:f => f} %>
+		</div>
+		<%= f.submit t('actions.save'), :class => "submit-button" %>
+	<% end %>
+</div>
 
 <% content_for :footer do %>
 	<%= link_to t('actions.back'), transports_path %>

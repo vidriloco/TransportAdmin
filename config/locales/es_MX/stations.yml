@@ -5,14 +5,29 @@ es_MX:
     attributes:
       station:
         name: "Nombre"
+        coordinates: "Coordenadas"
+        is_terminal: "¿Es terminal?"
+        has_previous_station: "¿Tiene estación previa?"
   stations:
+    update:
+      messages:
+        saved: "La estación fue actualizada"
+        not_saved: "La estación no pudo ser actualizada"
+    edit:
+      title: "Modificando Estación"
+    types:
+      terminal: "Terminal"
+      non_terminal: "Estación de paso"
+    destroy:
+      messages:
+        done: "Estación eliminada"
     index:
       title: "Estaciones de esta línea"
       no_records: "No hay estaciones registradas aún"
     create:
       messages:
-        saved: "La partición ha sido guardada"
-        not_saved: "La partición no pudo ser guardada"
+        saved: "La estación ha sido guardada"
+        not_saved: "La estación no pudo ser guardada"
     new:
       title: "Nueva Estación"
       tips:

@@ -6,7 +6,7 @@ TransportAdder::Application.routes.draw do
     resources :partitions
   end
   
-  get "/agroupers/:agrouper_id/stations/new" => 'stations#new', :as => "new_agrouper_station"
+  get "/lines/:agrouper_id/stations/new" => 'stations#new', :as => "new_line_station", :defaults => { :agrouper_type => 'Line' }
   
   resources :partitions
   resources :stations

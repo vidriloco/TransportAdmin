@@ -3,9 +3,9 @@
 <% if station_agrouper.stations.empty? %>
 	<%= t('stations.index.no_records') %>
 <% else %>
-	
+	<%= render station_agrouper.stations %>
 <% end %>
 
 <div class="new-station">
-	<h3><%= link_to t('stations.new.title'), new_agrouper_station_path(station_agrouper) %></h3>
+	<h3><span>+</span><%= link_to t('stations.new.title'), new_line_station_path(station_agrouper) %></h3>
 </div>

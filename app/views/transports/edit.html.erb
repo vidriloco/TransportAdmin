@@ -2,14 +2,21 @@
 	<%= t('transports.update.messages.not_saved') %>
 <% end %>
 
-<h1><%= t('transports.edit.title') %></h1>
-
-<%= form_for @transport, :method => :put do |f| %>
-	<div class="simple-form">
-		<%= render :partial => 'form', :locals => {:f => f} %>
-	</div>
-	<%= f.submit t('actions.save'), :class => "submit-button" %>
+<% content_for :header do %>
+	<%= t('transports.edit.title') %>
 <% end %>
+
+<br/>
+
+<div class="block">
+	<%= form_for @transport, :method => :put do |f| %>
+		<div class="simple-form">
+			<%= render :partial => 'form', :locals => {:f => f} %>
+		</div>
+		<%= f.submit t('actions.save'), :class => "submit-button" %>
+	<% end %>
+</div>
+
 
 <% content_for :footer do %>
 	<%= link_to t('actions.back'), transports_path %>

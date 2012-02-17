@@ -1,11 +1,11 @@
 <% if @station.errors.any? %>
 	<% content_for :alerts do %>
-		<%= t('stations.create.messages.not_saved') %>
+		<%= t('stations.update.messages.not_saved') %>
 	<% end %>
 <% end %>
 
 <% content_for :header do %>
-	<%= t('stations.new.title') %>
+	<%= t('stations.edit.title') %>
 <% end %>
 
 <%= render 'sub_header' %>

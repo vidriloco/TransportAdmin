@@ -4,8 +4,16 @@
 	<% end %>
 <% end %>
 
-<h1><%= t('lines.new.title') %></h1>
+<% content_for :header do %>
+	<%= t('lines.new.title') %>
+<% end %>
 
-<%= render 'form' %>
+<br/>
 
-<%= link_to t('actions.back'), lines_path, :class => "back-link" %>
+<div class="block">
+	<%= render 'form' %>
+</div>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), lines_path, :class => "back-link" %>
+<% end %>

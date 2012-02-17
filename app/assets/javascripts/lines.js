@@ -1,16 +1,16 @@
-var replaceSigning = function() {
-	if($('.sign').text() == '+') {
-		$('.sign').text('-');
+var replaceSigning = function(domElement) {
+	if($(domElement).text() == '+') {
+		$(domElement).text('-');
 	} else {
-		$('.sign').text('+');
+		$(domElement).text('+');
 	}
 }
 
 $(document).ready(function() {
-	if($.isDefinedInDom('.way-form-toggle')) {
+	if($.isDefined('.way-form-toggle')) {
 		$('.way-form-toggle').click(function() {
 			$('.new-way-form').toggle();
-			replaceSigning();
+			replaceSigning($(this).siblings()[0]);
 		});
 	}
 });

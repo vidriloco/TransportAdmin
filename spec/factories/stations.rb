@@ -16,6 +16,7 @@ FactoryGirl.define do
   
   factory :station do |t|
     t.name "Station example"
+    t.coordinates Point.from_lon_lat(-99.140496, 19.378269, 4326)
   end
   
 end
