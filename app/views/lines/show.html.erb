@@ -12,6 +12,10 @@
 	<div class="stations subsection">
 		<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
 	</div>
+	
+	<div class="segments subsection">
+		<%= render :partial => "segments/index", :locals => {:station_agrouper => @line } %>
+	</div>
 </div>
 
 <% content_for :footer do %>

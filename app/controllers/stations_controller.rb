@@ -12,6 +12,7 @@ class StationsController < ActionController::Base
     @station.apply_geo(params[:coordinates])
     
     if @station.save
+      
       redirect_to @station.agrouper, :notice => I18n.t('stations.create.messages.saved')
     else
       render :action => "new"

@@ -13,8 +13,10 @@ TransportAdder::Application.routes.draw do
   
   resources :ways, :only => [:destroy]
   
+  resources :segments
   
   resources :lines do
+    resources :segments
     resources :ways, :only => [:create]
   end
   

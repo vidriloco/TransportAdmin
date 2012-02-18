@@ -8,7 +8,7 @@
 	<%= t('stations.new.title') %>
 <% end %>
 
-<%= render 'sub_header' %>
+<%= render :partial => 'shared/sub_header', :locals => {:agrouper => @agrouper} %>
 
 <div class="block">
 	<%= form_for @station do |f| %>

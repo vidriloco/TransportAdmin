@@ -6,6 +6,8 @@ es_MX:
       line:
         name: "Nombre"
         name_by_directions: "Nombre por sus direcciones"
+        right_terminal: "Terminal oriente (o sur)"
+        left_terminal: "Terminal poniente (o norte)"
         color: "Color (hexadecimal)"
         transport: "Transporte al que pertenece"
   lines:

@@ -7,17 +7,21 @@ es_MX:
         name: "Nombre"
         coordinates: "Coordenadas"
         is_terminal: "¿Es terminal?"
-        has_previous_station: "¿Tiene estación previa?"
   stations:
+    
+    types:
+      terminal: "Terminal"
+      non_terminal: "Estación de paso"
+    directions:
+      right: "Desde la estación anterior hacia esta nueva"
+      left: "Desde la nueva hacia la anterior"
+      both: "Entre ambas"
     update:
       messages:
         saved: "La estación fue actualizada"
         not_saved: "La estación no pudo ser actualizada"
     edit:
       title: "Modificando Estación"
-    types:
-      terminal: "Terminal"
-      non_terminal: "Estación de paso"
     destroy:
       messages:
         done: "Estación eliminada"
@@ -30,6 +34,13 @@ es_MX:
         not_saved: "La estación no pudo ser guardada"
     new:
       title: "Nueva Estación"
+      sub_form:
+        title: "Meta-datos de intertramo"
+        kms: "kms"
+        fields:
+          directions: "Existe circulación:"
+          distance: "Distancia entre estaciones: "
+          previous_station: "Estación previa:"
       tips:
         lat: "(19.22....)"
         lon: "(-99.20....)"

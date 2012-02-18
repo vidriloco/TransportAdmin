@@ -1,6 +1,8 @@
-<div class="station inlined" id="station-<%= station.id %>">
+<div class="station rounded-5" id="station-<%= station.id %>">
 	- <i><%= station.is_terminal ? t("stations.types.terminal") : t("stations.types.non_terminal") %></i> <b><%= station.name %></b> 
-
-	<%= link_to t('actions.edit'), edit_station_path(station) %>
-	<%= button_to t('actions.delete'), station, :method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
+	
+	<div class="actions inlined">
+		<%= link_to t('actions.edit'), edit_station_path(station) %>
+		<%= button_to t('actions.delete'), station, :method => :delete, :confirm => t('messages.destroy_confirmation') %>
+	</div>
 </div>

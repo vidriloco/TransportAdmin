@@ -7,6 +7,7 @@ gem 'rails', '3.2.1'
 
 gem 'pg'
 gem 'spatial_adapter', :git => 'https://github.com/Empact/spatial_adapter.git'
+gem 'neography'
 gem 'neoid'
 
 group :test do

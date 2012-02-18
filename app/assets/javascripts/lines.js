@@ -13,4 +13,10 @@ $(document).ready(function() {
 			replaceSigning($(this).siblings()[0]);
 		});
 	}
+	
+	if($.isDefined('.extended-form-toggle')) {
+		$('.extended-form-toggle').click(function() {
+			$('.extended-form').toggle();
+		});
+	}
 });

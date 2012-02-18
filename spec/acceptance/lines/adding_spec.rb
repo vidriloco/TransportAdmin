@@ -18,7 +18,8 @@ feature 'Adding a new line: '  do
     
     scenario "should let save a new line registry and add-remove paths to it", :js => true do
       fill_in "line_name", :with => "Línea 3"
-      fill_in "line_name_by_directions", :with => "Indios Verdes - Universidad"
+      fill_in "line_right_terminal", :with => "Universidad"
+      fill_in "line_left_terminal", :with => "Indios Verdes"
       fill_in "line_color", :with => "#ffffff"
       
       select @metro.name, :from => "line_transport_id"

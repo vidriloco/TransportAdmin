@@ -1,0 +1,11 @@
+<h2><%= t('segments.index.title') %></h2>
+
+<% if station_agrouper.segments.empty? %>
+	<%= t('segments.index.no_records') %>
+<% else %>
+	<%= render station_agrouper.segments %>
+<% end %>
+
+<div class="new-segment">
+	<h3><span>+</span><%= link_to t('segments.new.title'), new_line_segment_path(station_agrouper) %></h3>
+</div>

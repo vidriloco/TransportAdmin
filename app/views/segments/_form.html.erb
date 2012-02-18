@@ -1,0 +1,16 @@
+<div class="simple-form">
+	<%= f.label :origin_station, t('activerecord.attributes.segment.origin_station') %>
+	<%= f.select :origin_station_id, options_from_collection_for_select(@line.stations, "id", "name", @segment.origin_station_id) %>
+
+	<%= f.label :destination_station, t('activerecord.attributes.segment.destination_station') %>
+	<%= f.select :destination_station_id, options_from_collection_for_select(@line.stations, "id", "name", @segment.destination_station_id) %>
+	
+	<%= f.hidden_field :line_id, :value => @line.id %>
+	<br/>
+	<br/>
+	<%= f.check_box :double_direction, {}, true, false %> <b><%= t('segments.form.build_two_way_segment') %></b>
+	<%= f.label t('stations.new.sub_form.fields.distance') %>
+	<%= f.text_field :distance %> <%= t('stations.new.sub_form.kms') %>
+</div>
+
+<%= f.submit t('actions.save') %>

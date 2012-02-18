@@ -1,0 +1,29 @@
+es_MX:
+  activerecord:
+    models:
+      segment: "Segmento"
+    attributes:
+      segment:
+        origin_station: "Estación origen"
+        destination_station: "Estación destino"
+  segments:
+    index:
+      title: "Segmentos de esta línea"
+      no_records: "No hay segmentos registrados para esta línea"
+    edit:
+      title: "Modificar Segmento"
+    new:
+      title: "Nuevo Segmento"
+    form:
+      build_two_way_segment: "La conexión entre estaciones es en dos direcciones"
+    destroy:
+      messages:
+        done: "El segmento ha sido eliminado"
+    update:
+      messages:
+        saved: "El segmento ha sido actualizado"
+        not_saved: "El segmento no pudo ser actualizado"
+    create:
+      messages:
+        saved: "El segmento ha sido guardado"
+        not_saved: "El segmento no pudo ser guardado"

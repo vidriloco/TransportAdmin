@@ -54,7 +54,6 @@ feature 'Reviewing the details of a line: '  do
     end
     
     scenario "should let me add stations to the line", :js => true do
-      
       page.should have_content I18n.t('stations.index.title')
       page.should have_content I18n.t('stations.index.no_records')
       
@@ -70,7 +69,6 @@ feature 'Reviewing the details of a line: '  do
       simulate_click_on_map({:lat => 19.42007620847585, :lon => -99.25376930236814})
       
       check "station_is_terminal"
-      uncheck "station_has_previous_station"
       
       click_on I18n.t('actions.save')
       
@@ -96,14 +94,13 @@ feature 'Reviewing the details of a line: '  do
     describe "having an station registered before" do
       
       before(:each) do
-        @station_name = "Observatorio"
-        register_new_station_with(@station_name)
+        @observatorio = register_new_station_with("Observatorio")
       end
 
       scenario "should let me delete it", :js => true do
         visit line_path(@line)
         
-        page.should have_content @station_name
+        page.should have_content @observatorio.name
         click_button I18n.t('actions.delete')
         page.driver.browser.switch_to.alert.accept
         page.current_path.should == line_path(@line)
@@ -112,10 +109,10 @@ feature 'Reviewing the details of a line: '  do
         page.should have_content I18n.t('stations.index.no_records')
       end
       
-      scenario "should let me change it's name", :js => true do
+      scenario "it's name can be changed", :js => true do
         visit line_path(@line)
         
-        page.should have_content @station_name
+        page.should have_content @observatorio.name
         click_link I18n.t('actions.edit')
         page.current_path.should == edit_station_path(Station.first)
         
@@ -129,10 +126,9 @@ feature 'Reviewing the details of a line: '  do
         page.should have_content I18n.t("stations.types.non_terminal")
       end
       
-      scenario "should let me change it's coordinates", :js => true do
+      scenario "it's coordinates can be changed", :js => true do
         visit line_path(@line)
         
-        page.should have_content @station_name
         click_link I18n.t('actions.edit')
         page.current_path.should == edit_station_path(Station.first)
         simulate_click_on_map({:lat => 19.22007620847585, :lon => -99.15376930236814})
@@ -141,6 +137,79 @@ feature 'Reviewing the details of a line: '  do
         
       end
       
+      describe "having registered an additional station" do
+
+        before(:each) do
+          @tacubaya = register_new_station_with("Tacubaya")
+        end
+        
+        scenario "adding a segment with the same station as origin and endpoint should NOT be possible", :js => true do
+        
+          click_on I18n.t('segments.new.title')
+          page.should have_content I18n.t('segments.new.title')
+          select @observatorio.name, :from => "segment_origin_station_id"
+          select @observatorio.name, :from => "segment_destination_station_id"
+          
+          click_on I18n.t('actions.save')
+          page.should have_content I18n.t('segments.create.messages.not_saved')
+          page.current_path.should == segments_path
+        end
+        
+        
+        scenario "adding a segment which connects two stations, modify it and delete it", :js => true do
+          page.should have_content I18n.t('segments.index.title')
+          
+          click_on I18n.t('segments.new.title')
+        
+          page.should have_content I18n.t('segments.new.title')
+        
+          select @observatorio.name, :from => "segment_origin_station_id"
+          select @tacubaya.name, :from => "segment_destination_station_id"
+        
+          check "segment_double_direction"
+        
+          fill_in "segment_distance", :with => "12"
+        
+          click_on I18n.t('actions.save')
+          page.should have_content I18n.t('segments.create.messages.saved')
+          page.current_path.should == line_path(@line)
+        
+          within("#segment-#{Segment.first.id}") do
+            page.should have_content @observatorio.name
+            page.should have_content "<->"
+            page.should have_content @tacubaya.name
+            click_on I18n.t('actions.edit')
+          end
+          
+          page.should have_content I18n.t('segments.edit.title')
+        
+          select @tacubaya.name, :from => "segment_origin_station_id"
+          select @observatorio.name, :from => "segment_destination_station_id"
+        
+          uncheck "segment_double_direction"
+        
+          fill_in "segment_distance", :with => "1.3"
+        
+          click_on I18n.t('actions.save')
+          page.should have_content I18n.t('segments.update.messages.saved')
+          page.current_path.should == line_path(@line)
+          
+          within("#segment-#{Segment.first.id}") do
+            page.should have_content @tacubaya.name
+            page.should have_content ">"
+            page.should have_content @observatorio.name
+            click_on I18n.t('actions.delete')
+          end
+          
+          page.driver.browser.switch_to.alert.accept
+          page.current_path.should == line_path(@line)
+          page.should have_content I18n.t('segments.destroy.messages.done')
+
+          page.should have_content I18n.t('segments.index.no_records')
+          
+        end
+        
+      end
     end
    
   end
@@ -159,7 +228,7 @@ def register_new_station_with(name)
   simulate_click_on_map({:lat => 19.42007620847585, :lon => -99.25376930236814})
   
   check "station_is_terminal"
-  uncheck "station_has_previous_station"
   
   click_on I18n.t('actions.save')
+  Station.last
 end

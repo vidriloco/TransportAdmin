@@ -1,0 +1,21 @@
+<% if @segment.errors.any? %>
+	<% content_for :alerts do %>
+		<%= t('segments.update.messages.not_saved') %>
+	<% end %>
+<% end %>
+
+<% content_for :header do %>
+	<%= t('segments.edit.title') %>
+<% end %>
+
+<%= render :partial => 'shared/sub_header', :locals => {:agrouper => @line } %>
+
+<div class="block">
+	<%= form_for @segment, :method => :put do |f| %>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), line_path(@line) %>
+<% end %>

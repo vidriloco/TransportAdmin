@@ -19,15 +19,19 @@ describe TransportsController do
   describe "POST create" do
     
     before(:each) do
-      @params = {'name' => 'name', 'twitter' => 'tw', 'web_page' => 'page'}
       @transport = Transport.create! valid_attributes
     end
     
-    it "should assing a new record to transport" do
-      Transport.should_receive(:new).with(@params).and_return(@transport)
-      
-      post :create, :transport => @params
-      assigns(:transport).should == @transport
+    it "creates a new Transport" do
+      expect {
+        post :create, :transport => valid_attributes
+      }.to change(Transport, :count).by(1)
+    end
+    
+    it "should assing a new record to transport" do      
+      post :create, :transport => valid_attributes
+      assigns(:transport).should be_a(Transport)
+      assigns(:transport).should be_persisted
     end
     
     describe "on successful save" do

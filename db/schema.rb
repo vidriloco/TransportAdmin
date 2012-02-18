@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215064602) do
+ActiveRecord::Schema.define(:version => 20120218050825) do
 
   create_table "connections", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(:version => 20120215064602) do
 
   create_table "lines", :force => true do |t|
     t.string   "name"
-    t.string   "name_by_directions"
+    t.string   "right_terminal"
+    t.string   "left_terminal"
     t.integer  "transport_id"
     t.string   "color"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "partitions", :force => true do |t|
@@ -34,8 +35,19 @@ ActiveRecord::Schema.define(:version => 20120215064602) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "segments", :force => true do |t|
+    t.integer  "line_id"
+    t.integer  "origin_station_id"
+    t.integer  "destination_station_id"
+    t.float    "distance"
+    t.boolean  "double_direction"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
   create_table "stations", :force => true do |t|
     t.string   "name"
+    t.integer  "id_neo"
     t.boolean  "is_terminal"
     t.integer  "agrouper_id"
     t.string   "agrouper_type"
