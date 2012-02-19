@@ -1,6 +1,7 @@
 class Station < ActiveRecord::Base  
   belongs_to :agrouper, :polymorphic => true
   has_many :segments
+  has_many :connections
   
   validates_presence_of :name, :coordinates, :agrouper
     

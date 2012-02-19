@@ -94,7 +94,7 @@ feature 'Reviewing the details of a line: '  do
     describe "having an station registered before" do
       
       before(:each) do
-        @observatorio = register_new_station_with("Observatorio")
+        @observatorio = register_new_station_with("Observatorio", @line)
       end
 
       scenario "should let me delete it", :js => true do
@@ -140,7 +140,7 @@ feature 'Reviewing the details of a line: '  do
       describe "having registered an additional station" do
 
         before(:each) do
-          @tacubaya = register_new_station_with("Tacubaya")
+          @tacubaya = register_new_station_with("Tacubaya", @line)
         end
         
         scenario "adding a segment with the same station as origin and endpoint should NOT be possible", :js => true do
@@ -150,6 +150,42 @@ feature 'Reviewing the details of a line: '  do
           select @observatorio.name, :from => "segment_origin_station_id"
           select @observatorio.name, :from => "segment_destination_station_id"
           
+          click_on I18n.t('actions.save')
+          page.should have_content I18n.t('segments.create.messages.not_saved')
+          page.current_path.should == segments_path
+        end
+        
+        scenario "adding a repeated segment should NOT be possible", :js => true do
+          page.should have_content I18n.t('segments.index.title')
+          
+          click_on I18n.t('segments.new.title')
+        
+          page.should have_content I18n.t('segments.new.title')
+        
+          select @observatorio.name, :from => "segment_origin_station_id"
+          select @tacubaya.name, :from => "segment_destination_station_id"
+        
+          check "segment_double_direction"
+        
+          fill_in "segment_distance", :with => "12"
+        
+          click_on I18n.t('actions.save')
+          page.should have_content I18n.t('segments.create.messages.saved')
+          page.current_path.should == line_path(@line)
+          
+          page.should have_content I18n.t('segments.index.title')
+          
+          click_on I18n.t('segments.new.title')
+        
+          page.should have_content I18n.t('segments.new.title')
+        
+          select @observatorio.name, :from => "segment_origin_station_id"
+          select @tacubaya.name, :from => "segment_destination_station_id"
+        
+          check "segment_double_direction"
+        
+          fill_in "segment_distance", :with => "12"
+        
           click_on I18n.t('actions.save')
           page.should have_content I18n.t('segments.create.messages.not_saved')
           page.current_path.should == segments_path
@@ -209,20 +245,90 @@ feature 'Reviewing the details of a line: '  do
           
         end
         
+        describe "with an station registered on another line" do
+          
+          before(:each) do
+            @line_two=Factory(:blue_line, :transport_id => Factory(:metro).id)
+            visit line_path(@line_two)
+            @tacubaya_dos = register_new_station_with("Tacubaya", @line_two)
+          end
+          
+          scenario "adding a connection between two stations, modify it and delete it", :js => true do
+            visit line_path(@line)
+            page.should have_content I18n.t('connections.index.title')
+          
+            click_on I18n.t('connections.new.title')
+        
+            page.should have_content I18n.t('connections.new.title')
+        
+            select @tacubaya.name, :from => "connection_one_station_id"
+            select @tacubaya_dos.name, :from => "connection_another_station_id"
+                    
+            select(I18n.t('connections.evaluations.length.large'), :from => "connection_length")
+            select(I18n.t('connections.evaluations.accessibility.high'), :from => "connection_accessibility")
+            select(I18n.t('connections.evaluations.kind.internal'), :from => "connection_kind")
+          
+            click_on I18n.t('actions.save')
+            page.should have_content I18n.t('connections.create.messages.saved')
+            page.current_path.should == line_path(@line)
+            
+            visit line_path(@line_two)
+            within("#connection-#{Connection.first.id}") do
+              within(".one") do
+                page.should have_content @tacubaya_dos.name
+              end
+              page.should have_content I18n.t('connections.index.connector')
+              within(".another") do
+                page.should have_content @tacubaya.name
+              end
+              click_on I18n.t('actions.edit')
+            end
+          
+            page.should have_content I18n.t('connections.edit.title')
+            
+            select @observatorio.name, :from => "connection_another_station_id"
+            
+            select(I18n.t('connections.evaluations.length.short'), :from => "connection_length")
+            select(I18n.t('connections.evaluations.accessibility.low'), :from => "connection_accessibility")
+            select(I18n.t('connections.evaluations.kind.external'), :from => "connection_kind")
+        
+            click_on I18n.t('actions.save')
+            page.should have_content I18n.t('connections.update.messages.saved')
+            page.current_path.should == line_path(@line_two)
+          
+            within("#connection-#{Connection.first.id}") do
+              within(".one") do
+                page.should have_content @tacubaya_dos.name
+              end
+              page.should have_content I18n.t('connections.index.connector')
+              within(".another") do
+                page.should have_content @observatorio.name
+              end
+              click_on I18n.t('actions.delete')
+            end
+          
+            page.driver.browser.switch_to.alert.accept
+            page.current_path.should == line_path(@line_two)
+            page.should have_content I18n.t('connections.destroy.messages.done')
+
+            page.should have_content I18n.t('connections.index.no_records')
+          
+          end
+        end
       end
     end
    
   end
 end
 
-def register_new_station_with(name)
+def register_new_station_with(name, line)
   click_on I18n.t('stations.new.title')
-  page.current_path.should == new_line_station_path(@line)
+  page.current_path.should == new_line_station_path(line)
   
   page.should have_content I18n.t('stations.new.title')
-  page.should have_content @line.transport.name
-  page.should have_content @line.name
-  page.should have_content @line.name_by_directions
+  page.should have_content line.transport.name
+  page.should have_content line.name
+  page.should have_content line.name_by_directions
   
   fill_in "station_name", :with => name
   simulate_click_on_map({:lat => 19.42007620847585, :lon => -99.25376930236814})

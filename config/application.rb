@@ -26,7 +26,7 @@ module TransportAdder
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-    config.autoload_paths += Dir[Rails.root.join('app', 'modules', 'controllers', '*.{rb}').to_s]
+    config.autoload_paths += %W(#{Rails.root}/lib/modules)
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 

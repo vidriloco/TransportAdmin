@@ -16,6 +16,7 @@ TransportAdder::Application.routes.draw do
   resources :segments
   
   resources :lines do
+    resources :connections
     resources :segments
     resources :ways, :only => [:create]
   end

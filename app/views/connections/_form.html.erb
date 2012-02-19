@@ -1,0 +1,28 @@
+<div class="simple-form">
+	<div class="inlined-spaced">
+		<% if @connection.another_line == @line %>
+			<%= render :partial => 'form_order_station', :locals => {:f => f, :first_s => @connection.another_station_id, :last_s => @connection.one_station_id} %>
+		<% else %>
+			<%= render :partial => 'form_order_station', :locals => {:f => f, :first_s => @connection.one_station_id, :last_s => @connection.another_station_id} %>
+		<% end %>
+	</div>
+	<%= f.hidden_field :one_line_id, :value => @line.id %>
+	<br/><br/>
+	<div class="inlined-spaced">
+		<div>
+			<%= f.label :accessibility, t('activerecord.attributes.connection.accessibility') %>
+			<%= f.select :accessibility, options_for_select(Connection.humanized_opts_for(:accessibility), @connection.accessibility) %>
+		</div>
+		<div>
+			<%= f.label :length, t('activerecord.attributes.connection.length') %>
+			<%= f.select :length, options_for_select(Connection.humanized_opts_for(:length), @connection.length) %>
+		</div>
+		<div>
+			<%= f.label :kind, t('activerecord.attributes.connection.kind') %>
+			<%= f.select :kind, options_for_select(Connection.humanized_opts_for(:kind), @connection.kind) %>
+		</div>
+	</div>
+	
+</div>
+
+<%= f.submit t('actions.save') %>

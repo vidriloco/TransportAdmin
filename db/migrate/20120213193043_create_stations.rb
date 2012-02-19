@@ -1,11 +1,10 @@
 class CreateStations < ActiveRecord::Migration
   def change
     create_table :stations do |t|
-      t.string :name
-      t.integer :id_neo
-      t.point :coordinates, :srid => 4326, :with_z => false 
+      t.string :name, :null => false
+      t.point :coordinates, :srid => 4326, :with_z => false, :null => false
       t.boolean :is_terminal
-      t.references :agrouper, :polymorphic => true
+      t.references :agrouper, :polymorphic => true, :null => false
       t.timestamps
     end
   end

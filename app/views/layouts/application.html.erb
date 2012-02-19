@@ -24,9 +24,12 @@
 			</div>
 		<% end %>
 		
+		
 		<div class="inter">
 			<%= yield %>
 		</div>
+		<%= yield(:raw) %>
+		
 		
 		<div class="inter-footer">
 			<%= yield(:footer) %>

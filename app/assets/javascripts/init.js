@@ -11,7 +11,7 @@ $(document).ready(function() {
 	}
 	
 	if($.isDefined('.color-h')) {
-		$('.sub-header').css('background-color', $('.color-h').text());
+		$('.colorable').css('background-color', $('.color-h').text());
 	}
 
 	var mapDefaultOpts = {

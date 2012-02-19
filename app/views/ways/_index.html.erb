@@ -1,4 +1,8 @@
-<h2><%= t('ways.index.title') %></h2>
+<div class="new-way inlined">
+	<h2><%= t('ways.index.title') %></h2>
+	
+	<%= render 'ways/new' %>
+</div>
 
 <% if @line.ways.empty? %>
 	<%= t('ways.index.no_records') %>
@@ -10,6 +14,4 @@
 	<% end %>
 <% end %>
 
-<div class="new-way">
-	<%= render 'ways/new' %>
-</div>
+

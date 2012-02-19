@@ -1,0 +1,9 @@
+<div>
+	<%= f.label :one_station, t('activerecord.attributes.connection.one_station') %>
+	<%= f.select :one_station_id, options_from_collection_for_select(@line.stations, "id", "name", first_s) %>
+</div>
+<div>
+	<%= f.label :another_station, t('activerecord.attributes.connection.another_station') %>
+	<%= f.select :another_station_id, 
+	option_groups_from_collection_for_select(Line.all_except(@line), :stations, :line_transport, :id, :name, last_s) %>
+</div>

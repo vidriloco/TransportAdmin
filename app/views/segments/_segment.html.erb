@@ -1,9 +1,10 @@
-<div class="segment inlined" id="segment-<%= segment.id %>">
+<div class="segment inlined rounded-5" id="segment-<%= segment.id %>">
 	<span class="origin"><%= segment.origin_station.name %></span>
 	<span class="direction"><%= segment.double_direction ? "<->" : ">" %></span>
 	<span class="destination"><%= segment.destination_station.name %></span>
 	
-
-	<%= link_to t('actions.edit'), edit_segment_path(segment) %>
-	<%= button_to t('actions.delete'), segment, :method => :delete, :confirm => t('messages.destroy_confirmation') %>
+	<span class="actions">
+		<%= link_to t('actions.edit'), edit_segment_path(segment) %>
+		<%= button_to t('actions.delete'), segment, :method => :delete, :confirm => t('messages.destroy_confirmation') %>
+	</span>
 </div>

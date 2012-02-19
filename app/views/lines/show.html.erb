@@ -1,22 +1,25 @@
-<div class="hidden color-h"><%= @line.color %></div>
-<div class="sub-header">
-	<h1><span class="transport"><%= @line.transport.name %></span> - <span class="line"><%= @line.name %></span> </h1>
-	<span class="name-by-directions"><%= @line.name_by_directions %></span>
-</div>
+<%= render :partial => 'shared/sub_header', :locals => {:agrouper => @line } %>
 
-<div class="block">
-	<div class="ways subsection">
-		<%= render 'ways/index' %>
-	</div>
-
-	<div class="stations subsection">
-		<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
-	</div>
+<% content_for :raw do %>
+	<div class="block">
+		<div class="ways subsection">
+			<%= render 'ways/index' %>
+		</div>
+		<div class="divider"></div>
+		<div class="stations subsection">
+			<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
+		</div>
+		<div class="divider"></div>
+		<div class="segments subsection">
+			<%= render :partial => "segments/index", :locals => {:station_agrouper => @line } %>
+		</div>
+		<div class="divider"></div>
+		<div class="connections subsection">
+			<%= render :partial => "connections/index", :locals => {:station_agrouper => @line } %>
+		</div>
 	
-	<div class="segments subsection">
-		<%= render :partial => "segments/index", :locals => {:station_agrouper => @line } %>
 	</div>
-</div>
+<% end %>
 
 <% content_for :footer do %>
 	<%= link_to t('actions.back'), lines_path %>

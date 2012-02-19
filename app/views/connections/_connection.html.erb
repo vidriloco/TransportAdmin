@@ -1,0 +1,10 @@
+<div class="connection inlined rounded-5" id="connection-<%= connection.id %>">
+	<span class="one"><%= render :partial => 'connections/details', :locals => { :station => connection.one_station } %></span>
+	<span class="connector"><%= t('connections.index.connector') %></span>
+	<span class="another"><%= render :partial => 'connections/details', :locals => { :station => connection.another_station } %></span>
+	
+	<span class="actions">
+		<%= link_to t('actions.edit'), edit_line_connection_path(@line, connection) %>
+		<%= button_to t('actions.delete'), connection, :method => :delete, :confirm => t('messages.destroy_confirmation') %>
+	</span>
+</div>

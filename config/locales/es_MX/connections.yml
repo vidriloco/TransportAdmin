@@ -1,0 +1,43 @@
+es_MX:
+  activerecord:
+    models:
+      connection: "Correspondencia"
+    attributes:
+      connection:
+        kind: "Tipo"
+        distance: "Distancia entre andenes"
+        accessibility: "Nivel de accesibilidad"
+        one_station: "De andén de esta línea"
+        another_station: "A otro andén en otra línea"
+  connections:
+    
+    evaluations:
+      accessibility:
+        low: "Bajo"
+        high: "Alto"
+      length:
+        short: "Corta"
+        medium: "Media"
+        large: "Larga"
+      kind:
+        internal: "Interna"
+        external: "Externa"
+    index:
+      connector: "==="
+      title: "Correspondencias con esta línea"
+      no_records: "No hay correspondencias registradas para esta línea"
+    edit:
+      title: "Modificar Correspondencia"
+    new:
+      title: "Nueva Correspondencia"
+    destroy:
+      messages:
+        done: "La correspondencia ha sido eliminada"
+    update:
+      messages:
+        saved: "La correspondencia ha sido actualizada"
+        not_saved: "La correspondencia no pudo ser actualizada"
+    create:
+      messages:
+        saved: "La correspondencia ha sido guardada"
+        not_saved: "La correspondencia no pudo ser guardada"
