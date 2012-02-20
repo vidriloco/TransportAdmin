@@ -6,7 +6,7 @@ class CreateConnections < ActiveRecord::Migration
       t.integer :one_line_id, :null => false
       t.integer :another_line_id, :null => false
       t.integer :length
-      t.integer :accessibility
+      t.boolean :is_accessible
       t.integer :kind
       t.timestamps
     end

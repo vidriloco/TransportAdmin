@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120219064844) do
     t.integer  "one_line_id",        :null => false
     t.integer  "another_line_id",    :null => false
     t.integer  "length"
-    t.integer  "accessibility"
+    t.boolean  "is_accessible"
     t.integer  "kind"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -66,12 +66,14 @@ ActiveRecord::Schema.define(:version => 20120219064844) do
   add_index "segments", ["origin_station_id"], :name => "origin_station_id_ix"
 
   create_table "stations", :force => true do |t|
-    t.string   "name",                       :null => false
+    t.string   "name",                         :null => false
     t.boolean  "is_terminal"
+    t.boolean  "is_accessible"
+    t.integer  "bike_parking"
     t.integer  "line_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.point    "coordinates", :limit => nil, :null => false, :srid => 4326
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.point    "coordinates",   :limit => nil, :null => false, :srid => 4326
   end
 
   create_table "transports", :force => true do |t|

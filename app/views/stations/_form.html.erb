@@ -7,6 +7,12 @@
 	<%= hidden_field_tag "coordinates[lat]", @station.coordinates.nil? ? nil : @station.coordinates.lat %>
 	<%= hidden_field_tag "coordinates[lon]", @station.coordinates.nil? ? nil : @station.coordinates.lon %>
 	<%= f.hidden_field :line_id, :value => @line.id %>
+	<br/>
+	<div><%= f.check_box :is_accessible, {}, @station.is_accessible %> <b><%= t('activerecord.attributes.connection.is_accessible') %></b></div>
+	<br/>
+	<%= f.label :bike_parking, t('activerecord.attributes.station.bike_parking') %>
+	<%= f.select :bike_parking, options_for_select(Station.humanized_opts_for(:bike_parking), @station.bike_parking) %>
+	<br/><br/>
 	<div id="map-box">
 		<div style="width:100%; height:400px;" id="map" class="hide-address-on-load is-editable displays-points radio-5"></div>
 	</div>

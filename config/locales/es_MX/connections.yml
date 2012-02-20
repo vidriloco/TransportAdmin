@@ -5,23 +5,12 @@ es_MX:
     attributes:
       connection:
         kind: "Tipo"
-        distance: "Distancia entre andenes"
-        accessibility: "Nivel de accesibilidad"
+        length: "Distancia entre andenes"
+        is_accessible: "¿Tiene elevadores, escaleras eléctricas funcionando o al menos rampas?"
         one_station: "De andén de esta línea"
         another_station: "A otro andén en otra línea"
   connections:
-    
-    evaluations:
-      accessibility:
-        low: "Bajo"
-        high: "Alto"
-      length:
-        short: "Corta"
-        medium: "Media"
-        large: "Larga"
-      kind:
-        internal: "Interna"
-        external: "Externa"
+
     index:
       connector: "==="
       title: "Correspondencias con esta línea"

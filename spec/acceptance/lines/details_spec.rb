@@ -67,6 +67,9 @@ feature 'Reviewing the details of a line: '  do
       
       fill_in "station_name", :with => "Observatorio"
       simulate_click_on_map({:lat => 19.42007620847585, :lon => -99.25376930236814})
+      check "station_is_accessible"
+      
+      select I18n.t('selectable_options.bike_parking.internal'), :from => "station_bike_parking"
       
       check "station_is_terminal"
       
@@ -118,6 +121,9 @@ feature 'Reviewing the details of a line: '  do
         
         fill_in "station_name", :with => "Insurgentes"
         uncheck "station_is_terminal"
+        check "station_is_accessible"
+        select I18n.t('selectable_options.bike_parking.external'), :from => "station_bike_parking"
+        
         
         click_on I18n.t('actions.save')
         page.should have_content I18n.t('stations.update.messages.saved')
@@ -264,9 +270,10 @@ feature 'Reviewing the details of a line: '  do
             select @tacubaya.name, :from => "connection_one_station_id"
             select @tacubaya_dos.name, :from => "connection_another_station_id"
                     
-            select(I18n.t('connections.evaluations.length.large'), :from => "connection_length")
-            select(I18n.t('connections.evaluations.accessibility.high'), :from => "connection_accessibility")
-            select(I18n.t('connections.evaluations.kind.internal'), :from => "connection_kind")
+            check "connection_is_accessible"
+            
+            select(I18n.t('selectable_options.length.large'), :from => "connection_length")
+            select(I18n.t('selectable_options.kind.internal'), :from => "connection_kind")
           
             click_on I18n.t('actions.save')
             page.should have_content I18n.t('connections.create.messages.saved')
@@ -288,9 +295,9 @@ feature 'Reviewing the details of a line: '  do
             
             select @observatorio.name, :from => "connection_another_station_id"
             
-            select(I18n.t('connections.evaluations.length.short'), :from => "connection_length")
-            select(I18n.t('connections.evaluations.accessibility.low'), :from => "connection_accessibility")
-            select(I18n.t('connections.evaluations.kind.external'), :from => "connection_kind")
+            select(I18n.t('selectable_options.length.short'), :from => "connection_length")
+            uncheck "connection_is_accessible"
+            select(I18n.t('selectable_options.kind.external'), :from => "connection_kind")
         
             click_on I18n.t('actions.save')
             page.should have_content I18n.t('connections.update.messages.saved')

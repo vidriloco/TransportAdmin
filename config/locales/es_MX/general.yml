@@ -13,6 +13,18 @@ es_MX:
       number:
         one: "%{number} estación"
         other: "%{number} estaciones"
+  selectable_options:
+    bike_parking:
+      internal: "Dentro de la estación"
+      external: "Fuera de la estación"
+    length:
+      short: "Corta"
+      medium: "Media"
+      large: "Larga"
+    kind:
+      internal: "Interna"
+      external: "Externa"
+      
   actions:
     transports:
       add: "Agregar nuevo transporte"

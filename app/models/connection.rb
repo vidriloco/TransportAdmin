@@ -1,4 +1,6 @@
 class Connection < ActiveRecord::Base
+  include Models::HumanizatorSupport
+  
   belongs_to :one_station, :foreign_key => :one_station_id, :class_name => "Station"
   belongs_to :another_station, :foreign_key => :another_station_id, :class_name => "Station"
   
@@ -23,15 +25,6 @@ class Connection < ActiveRecord::Base
   
   def self.length_opts
     { 1 => :short, 2 => :medium, 3 => :large }
-  end
-  
-  def self.humanized_opts_for(type)
-    opts=self.send("#{type.to_s}_opts")
-    results=opts.each_key.inject({}) do |collected, last|
-      collected[I18n.t("connections.evaluations.#{type.to_s}.#{opts[last]}")] = last
-      collected
-    end
-    results
   end
   
   private
