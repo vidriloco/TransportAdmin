@@ -8,7 +8,7 @@
 	<%= t('connections.edit.title') %>
 <% end %>
 
-<%= render :partial => 'shared/sub_header', :locals => {:agrouper => @line } %>
+<%= render :partial => 'shared/sub_header', :locals => {:line => @line } %>
 
 <div class="block">
 	<%= form_for @connection, :method => :put do |f| %>

@@ -8,7 +8,7 @@
 	<%= t('stations.new.title') %>
 <% end %>
 
-<%= render :partial => 'shared/sub_header', :locals => {:agrouper => @agrouper} %>
+<%= render :partial => 'shared/sub_header', :locals => {:line => @line} %>
 
 <div class="block">
 	<%= form_for @station do |f| %>
@@ -17,5 +17,5 @@
 </div>
 
 <% content_for :footer do %>
-	<%= link_to t('actions.back'), line_path(@agrouper) %>
+	<%= link_to t('actions.back'), line_path(@line) %>
 <% end %>

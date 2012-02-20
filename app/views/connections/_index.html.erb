@@ -1,10 +1,10 @@
 <div class="new-connection inlined">
 	<h2><%= t('connections.index.title') %></h2>
-	<h3><span>+</span><%= link_to t('connections.new.title'), new_line_connection_path(station_agrouper) %></h3>
+	<h3><span>+</span><%= link_to t('connections.new.title'), new_line_connection_path(station_line) %></h3>
 </div>
 
-<% if station_agrouper.connections.empty? %>
+<% if station_line.connections.empty? %>
 	<%= t('connections.index.no_records') %>
 <% else %>
-	<%= render station_agrouper.connections %>
+	<%= render station_line.connections %>
 <% end %>

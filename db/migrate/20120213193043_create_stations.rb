@@ -4,7 +4,7 @@ class CreateStations < ActiveRecord::Migration
       t.string :name, :null => false
       t.point :coordinates, :srid => 4326, :with_z => false, :null => false
       t.boolean :is_terminal
-      t.references :agrouper, :polymorphic => true, :null => false
+      t.integer :line_id
       t.timestamps
     end
   end

@@ -13,7 +13,7 @@ describe Station do
   describe "having registered a station" do
 
     before(:each) do
-      @station = Factory(:observatorio, :agrouper => @line)
+      @station = Factory(:observatorio, :line => @line)
     end
 
     it "should allow me to change the coordinates of it" do

@@ -1,13 +1,13 @@
 
 <div class="new-segment inlined">
 	<h2><%= t('segments.index.title') %></h2>
-	<h3><span>+</span><%= link_to t('segments.new.title'), new_line_segment_path(station_agrouper) %></h3>
+	<h3><span>+</span><%= link_to t('segments.new.title'), new_line_segment_path(station_line) %></h3>
 </div>
 
 
-<% if station_agrouper.segments.empty? %>
+<% if station_line.segments.empty? %>
 	<%= t('segments.index.no_records') %>
 <% else %>
-	<%= render station_agrouper.segments %>
+	<%= render station_line.segments %>
 <% end %>
 

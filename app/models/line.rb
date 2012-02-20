@@ -1,6 +1,6 @@
 class Line < ActiveRecord::Base
   has_many :ways
-  has_many :stations, :as => :agrouper
+  has_many :stations
   has_many :segments
   
   belongs_to :transport

@@ -5,9 +5,7 @@ TransportAdder::Application.routes.draw do
     resources :lines
     resources :docking_stations
   end
-  
-  get "/lines/:agrouper_id/stations/new" => 'stations#new', :as => "new_line_station", :defaults => { :agrouper_type => 'Line' }
-  
+    
   resources :docking_stations, :except => [:edit, :update, :show]
   resources :stations
   
@@ -16,6 +14,7 @@ TransportAdder::Application.routes.draw do
   resources :segments
   
   resources :lines do
+    resources :stations
     resources :connections
     resources :segments
     resources :ways, :only => [:create]

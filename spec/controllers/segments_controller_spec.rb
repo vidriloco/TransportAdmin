@@ -24,8 +24,8 @@ describe SegmentsController do
     
     before(:each) do
       @valid_parameters = @line_params.merge({
-        :origin_station_id => Factory(:observatorio, :agrouper => @line).id, 
-        :destination_station_id => Factory(:tacubaya, :agrouper => @line).id, 
+        :origin_station_id => Factory(:observatorio, :line => @line).id, 
+        :destination_station_id => Factory(:tacubaya, :line => @line).id, 
         :line_id => @line.id,
         :double_direction => true
       })

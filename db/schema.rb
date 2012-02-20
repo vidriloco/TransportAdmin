@@ -66,13 +66,12 @@ ActiveRecord::Schema.define(:version => 20120219064844) do
   add_index "segments", ["origin_station_id"], :name => "origin_station_id_ix"
 
   create_table "stations", :force => true do |t|
-    t.string   "name",                         :null => false
+    t.string   "name",                       :null => false
     t.boolean  "is_terminal"
-    t.integer  "agrouper_id",                  :null => false
-    t.string   "agrouper_type",                :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.point    "coordinates",   :limit => nil, :null => false, :srid => 4326
+    t.integer  "line_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.point    "coordinates", :limit => nil, :null => false, :srid => 4326
   end
 
   create_table "transports", :force => true do |t|

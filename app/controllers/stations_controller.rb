@@ -1,7 +1,7 @@
 class StationsController < ActionController::Base
   layout 'application' 
     
-  before_filter :build_agrouper
+  before_filter :find_line, :except => [:destroy, :edit]
   
   def new
     @station = Station.new
@@ -13,7 +13,7 @@ class StationsController < ActionController::Base
     
     if @station.save
       
-      redirect_to @station.agrouper, :notice => I18n.t('stations.create.messages.saved')
+      redirect_to @line, :notice => I18n.t('stations.create.messages.saved')
     else
       render :action => "new"
     end
@@ -21,15 +21,14 @@ class StationsController < ActionController::Base
   
   def destroy
     @station = Station.find(params[:id])
-    agrouper = @station.agrouper
     @station.destroy
     
-    redirect_to agrouper, :notice => I18n.t('stations.destroy.messages.done')
+    redirect_to @station.line, :notice => I18n.t('stations.destroy.messages.done')
   end
   
   def edit
     @station = Station.find(params[:id])
-    @agrouper = @station.agrouper
+    @line = @station.line
   end
   
   def update
@@ -37,19 +36,14 @@ class StationsController < ActionController::Base
     @station.apply_geo(params[:coordinates])
     
     if @station.update_attributes(params[:station])
-      redirect_to @station.agrouper, :notice => I18n.t('stations.update.messages.saved')
+      redirect_to @line, :notice => I18n.t('stations.update.messages.saved')
     else
       render :action => "edit"
     end
   end
   
   private 
-  def build_agrouper
-    parameters = action_name.eql?("create") || action_name.eql?("update") ? params[:station] : params
-    if parameters[:agrouper_type].eql?("Line") 
-      @agrouper=Line.find(parameters[:agrouper_id])
-    elsif parameters[:agrouper_type].eql?("Partition")
-      @agrouper=Partition.find(parameters[:agrouper_id])
-    end
+  def find_line
+    @line= params.has_key?(:station) ? Line.find(params[:station][:line_id]) : Line.find(params[:line_id])
   end
 end

@@ -20,8 +20,8 @@ describe ConnectionsController do
     
     before(:each) do
       @valid_parameters = {
-        :one_station_id => Factory(:observatorio, :agrouper => @line).id, 
-        :another_station_id => Factory(:tacubaya, :agrouper => @line).id, 
+        :one_station_id => Factory(:observatorio, :line => @line).id, 
+        :another_station_id => Factory(:tacubaya, :line => @line).id, 
         :one_line_id => @line.id
       }
     end

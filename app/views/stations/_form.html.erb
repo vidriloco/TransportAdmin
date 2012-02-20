@@ -6,8 +6,7 @@
 	<%= f.label :coordinates, t('activerecord.attributes.station.coordinates') %>
 	<%= hidden_field_tag "coordinates[lat]", @station.coordinates.nil? ? nil : @station.coordinates.lat %>
 	<%= hidden_field_tag "coordinates[lon]", @station.coordinates.nil? ? nil : @station.coordinates.lon %>
-	<%= f.hidden_field :agrouper_id, :value => @agrouper.id %>
-	<%= f.hidden_field :agrouper_type, :value => @agrouper.class.to_s %>
+	<%= f.hidden_field :line_id, :value => @line.id %>
 	<div id="map-box">
 		<div style="width:100%; height:400px;" id="map" class="hide-address-on-load is-editable displays-points radio-5"></div>
 	</div>

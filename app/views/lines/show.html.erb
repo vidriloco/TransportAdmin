@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/sub_header', :locals => {:agrouper => @line } %>
+<%= render :partial => 'shared/sub_header', :locals => {:line => @line } %>
 
 <% content_for :raw do %>
 	<div class="block">
@@ -15,15 +15,15 @@
 		</div>
 		<div class="divider"></div>
 		<div class="stations subsection">
-			<%= render :partial => 'stations/index', :locals => {:station_agrouper => @line } %>
+			<%= render :partial => 'stations/index', :locals => {:station_line => @line } %>
 		</div>
 		<div class="divider"></div>
 		<div class="segments subsection">
-			<%= render :partial => "segments/index", :locals => {:station_agrouper => @line } %>
+			<%= render :partial => "segments/index", :locals => {:station_line => @line } %>
 		</div>
 		<div class="divider"></div>
 		<div class="connections subsection">
-			<%= render :partial => "connections/index", :locals => {:station_agrouper => @line } %>
+			<%= render :partial => "connections/index", :locals => {:station_line => @line } %>
 		</div>
 	
 	</div>

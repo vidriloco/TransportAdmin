@@ -4,8 +4,8 @@ describe Segment do
   
   before(:each) do
     @line = Factory(:red_line, :transport_id => Factory(:metro).id)
-    @observatorio = Factory(:observatorio, :agrouper => @line)
-    @tacubaya = Factory(:tacubaya, :agrouper => @line)
+    @observatorio = Factory(:observatorio, :line => @line)
+    @tacubaya = Factory(:tacubaya, :line => @line)
   end
   
   describe "should NOT let save a new record" do

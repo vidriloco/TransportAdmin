@@ -36,7 +36,7 @@ class Connection < ActiveRecord::Base
   
   private
   def assign_another_station_line
-    self.another_line = another_station.agrouper
+    self.another_line = another_station.line
   end
   
 end
