@@ -1,7 +1,7 @@
 class LinesController < ApplicationController
 
   def index
-    @transports = Transport.find(:all, :include => [:lines, :partitions])
+    @transports = Transport.find(:all, :include => [:lines])
 
     respond_to do |format|
       format.html # index.html.erb

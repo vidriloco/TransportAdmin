@@ -2,9 +2,7 @@
 	<span class="name left"><%= link_to transport.name, transport %></span>
 	
 	<span class="right">
-	<% if transport.transport_mode_is?(:bike_sharing) %>
-			<%= link_to t('actions.partitions.see'), transport_partitions_path(transport) %>
-	<% else %>
+	<% unless transport.transport_mode_is?(:bike_sharing) %>
 			<%= link_to t('actions.lines.see'), transport_lines_path(transport) %>
 	<% end %>
 	</span>

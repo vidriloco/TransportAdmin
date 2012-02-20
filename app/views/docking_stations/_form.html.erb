@@ -1,0 +1,16 @@
+<div class="simple-form">
+	<%= f.label :name, t('activerecord.attributes.docking_station.name') %>
+	<%= f.text_field :name, :id => "docking_station_name" %>
+	<%= f.label :coordinates, t('activerecord.attributes.docking_station.coordinates') %>
+	<%= hidden_field_tag "coordinates[lat]", @docking_station.coordinates.nil? ? nil : @docking_station.coordinates.lat %>
+	<%= hidden_field_tag "coordinates[lon]", @docking_station.coordinates.nil? ? nil : @docking_station.coordinates.lon %>
+	
+	<%= f.hidden_field :transport_id, :value => (@docking_station.transport_id || @transport.id) %>
+	<div id="map-box">
+		<div style="width:100%; height:400px;" id="map" class="hide-address-on-load is-editable displays-points radio-5"></div>
+	</div>
+	
+</div>
+<br/>
+
+<%= f.submit t('actions.save') %>

@@ -18,7 +18,7 @@ feature 'Editing an existent transport: '  do
       fill_in "transports_name", :with => "STC Metro DF"
       fill_in "transports_web_page", :with => "www.metro.df.gob.mx"
       fill_in "transports_twitter", :with => "TwitterNuevo"
-      select "Bike sharing", :from => "transports_mode"
+      select "Subway", :from => "transports_mode"
     
       click_on I18n.t('actions.save') 
     

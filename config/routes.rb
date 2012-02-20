@@ -3,12 +3,12 @@ TransportAdder::Application.routes.draw do
   # first created -> highest priority.
   resources :transports do
     resources :lines
-    resources :partitions
+    resources :docking_stations
   end
   
   get "/lines/:agrouper_id/stations/new" => 'stations#new', :as => "new_line_station", :defaults => { :agrouper_type => 'Line' }
   
-  resources :partitions
+  resources :docking_stations, :except => [:edit, :update, :show]
   resources :stations
   
   resources :ways, :only => [:destroy]

@@ -1,6 +1,6 @@
 class Transport < ActiveRecord::Base
   has_many :lines
-  has_many :partitions
+  has_many :docking_stations
   
   validates_presence_of :name, :mode
   

@@ -5,15 +5,13 @@ feature 'Listing of lines: '  do
   before(:each) do
     @metro = Factory(:metro)
     @metrobus = Factory(:metrobus)
-    @ecobici = Factory(:ecobici)
   end
   
-  describe "having two lines registered for metro, one station for ecobici and none for metrobus" do
+  describe "having two lines registered for metro, and none for metrobus" do
     
     before(:each) do
       @bl=Factory(:blue_line, :transport_id => @metro.id)
       @rl=Factory(:red_line, :transport_id => @metro.id)
-      @ec=Factory(:partition, :transport_id => @ecobici.id)
     end
     
     describe "when visiting the index page" do

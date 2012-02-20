@@ -1,0 +1,15 @@
+<%= render :partial => 'docking_stations/transport_header', 
+					 :locals => {:transport => @transport } %>
+					
+<ul class="service-numbers">
+	<%= render :partial => 'shared/children_count', :locals => { :model_from => @transport, :property => :docking_stations }%>
+</ul>
+
+
+<% content_for :raw do %>
+	<div class="block">
+		<div class="docking-stations subsection">
+			<%= render 'docking_stations/index' %>
+		</div>
+	</div>
+<% end %>

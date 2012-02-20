@@ -1,43 +1,17 @@
-<h1><%= t('transports.show.title') %></h1>
-
 <div class="show block">
-	<p><span class="name attr-display">
-		<%= t('activerecord.attributes.transport.name') %>: </span>
-		<%= @transport.name %>
-	</p>
-	
-	<% unless @transport.twitter.blank? %>
-		<p><span class="attr-display">
-			<%= t('activerecord.attributes.transport.twitter') %>: </span>
-			<span class="twitter">@<%= @transport.twitter %></span>
-		</p>
-	<% end %>
-	
-	<p><span class="mode attr-display">
-		<%= t('activerecord.attributes.transport.mode') %>: </span>
-		<%= @transport.humanized_mode %>
-	</p>
-
-	<p><span class="lines-stations attr-display">
 	<% if @transport.transport_mode_is?(:bike_sharing) %>
-		<%= t('activerecord.attributes.transport.partitions') %>:
-		</span>
-		<%= count_humanized_with('messages.partitions.number', @transport.partitions.count).html_safe %>
-	
+		<%= render "bike_sharing" %>
 	<% else %>
-		<%= t('activerecord.attributes.transport.lines')%>:
-		</span>
-		<%= count_humanized_with('messages.lines.number', @transport.lines.count).html_safe %>
-	<% end %>
-	</p>
-
-	<% content_for :footer do %>
-		<%= link_to t('actions.back'), transports_path %>
-		
-		<div class="to-right inlined">
-			<%= link_to t('actions.edit'), edit_transport_path(@transport), :class => "modify" %>
-			<%= button_to t('actions.delete'), transport_path(@transport), 
-				:method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
-		</div>
+		<%= render 'common' %>
 	<% end %>
 </div>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), transports_path %>
+	
+	<div class="to-right inlined">
+		<%= link_to t('actions.edit'), edit_transport_path(@transport), :class => "modify" %>
+		<%= button_to t('actions.delete'), transport_path(@transport), 
+			:method => :delete, :confirm => I18n.t('messages.destroy_confirmation') %>
+	</div>
+<% end %>

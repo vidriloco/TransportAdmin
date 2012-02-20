@@ -2,6 +2,14 @@
 
 <% content_for :raw do %>
 	<div class="block">
+		
+		<ul class="service-numbers">
+			<% [:ways, :stations, :segments, :connections].each do |item| %>
+				<%= render :partial => 'shared/children_count', :locals => { :model_from => @line, :property => item }%>
+			<% end %>
+		</ul>
+		
+		
 		<div class="ways subsection">
 			<%= render 'ways/index' %>
 		</div>

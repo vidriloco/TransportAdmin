@@ -1,0 +1,22 @@
+<% if @docking_station.errors.any? %>
+	<% content_for :alerts do %>
+		<%= t('docking_stations.create.messages.not_saved') %>
+	<% end %>
+<% end %>
+
+<% content_for :header do %>
+	<%= t('docking_stations.new.title') %>
+<% end %>
+
+<%= render :partial => 'docking_stations/transport_header', 
+					 :locals => {:transport => (@docking_station.transport || @transport) } %>
+
+<div class="block">
+	<%= form_for @docking_station do |f| %>
+		<%= render :partial => 'form', :locals => {:f => f} %>
+	<% end %>
+</div>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), transport_path(@transport) %>
+<% end %>

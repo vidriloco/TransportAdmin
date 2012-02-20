@@ -9,26 +9,19 @@ describe StationsController do
   end
   
   describe "GET new" do
-    
-    describe "with a line agrouper" do
-    
-      it "assigns a new station as @station" do
-        get :new, @agrouper_params
-        assigns(:station).should be_a_new(Station)
-      end
-    
-      it "assigns the requested agrouper as @agrouper" do
-        get :new, @agrouper_params
-        assigns(:agrouper).should == @agrouper
-      end
-      
+    it "assigns a new station as @station" do
+      get :new, @agrouper_params
+      assigns(:station).should be_a_new(Station)
+    end
+  
+    it "assigns the requested agrouper as @agrouper" do
+      get :new, @agrouper_params
+      assigns(:agrouper).should == @agrouper
     end
   end
   
   describe "POST create" do
-    
-    it "should work for partitions"
-    
+        
     describe "with valid arguments" do
       
       before(:each) do

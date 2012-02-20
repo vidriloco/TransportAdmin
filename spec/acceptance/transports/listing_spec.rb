@@ -24,7 +24,6 @@ feature 'Listing of transports: '  do
       Factory.build(:blue_line, :transport_id => @metro.id)
       Factory.build(:red_line, :transport_id => @metro.id)
       @ecobici=Factory(:ecobici)
-      Factory.build(:partition, :transport_id => @ecobici.id)
     end
     
     describe "when visiting the index page" do
@@ -45,9 +44,7 @@ feature 'Listing of transports: '  do
         end
         
         within("#transport-#{@ecobici.id}") do
-          find_link @ecobici.name
-          
-          find_link I18n.t('actions.partitions.see')
+          find_link @ecobici.name          
         end
       end
     end

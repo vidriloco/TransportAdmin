@@ -10,6 +10,9 @@ es_MX:
     index:
       title: "Segmentos de esta línea"
       no_records: "No hay segmentos registrados para esta línea"
+      count:
+        one: "Un segmento"
+        other: "%{number} segmentos"
     edit:
       title: "Modificar Segmento"
     new:

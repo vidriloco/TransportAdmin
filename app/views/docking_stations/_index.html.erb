@@ -1,0 +1,12 @@
+
+<div class="new-docking-station inlined">
+	<h2><%= t('docking_stations.index.title') %></h2>
+	<h3><span>+</span><%= link_to t('docking_stations.new.title'), new_transport_docking_station_path(@transport) %></h3>
+</div>
+
+<% if @transport.docking_stations.empty? %>
+	<%= t('docking_stations.index.no_records') %>
+<% else %>
+	<%= render @transport.docking_stations %>
+<% end %>
+

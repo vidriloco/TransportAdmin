@@ -1,0 +1,7 @@
+<div class="inlined docking-station rounded-5" id="docking_station-<%= docking_station.id %>">
+	
+	<div><b><%= docking_station.name %></b> </div>
+	<div class="actions">
+		<%= button_to t('actions.delete'), docking_station, :method => :delete, :confirm => t('messages.destroy_confirmation') %>
+	</div>
+</div>

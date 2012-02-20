@@ -17,6 +17,9 @@ es_MX:
     index: 
       title: "Trazos para esta línea"
       no_records: "No hay trazos para esta línea"
+      count:
+        one: "Un trazo"
+        other: "%{number} trazos"
     new:
       title: "Nuevo trazo"
     show:

@@ -1,0 +1,24 @@
+
+<h1><%= t('transports.show.title') %></h1>
+<p><span class="name attr-display">
+	<%= t('activerecord.attributes.transport.name') %>: </span>
+	<%= @transport.name %>
+</p>
+
+<% unless @transport.twitter.blank? %>
+	<p><span class="attr-display">
+		<%= t('activerecord.attributes.transport.twitter') %>: </span>
+		<span class="twitter">@<%= @transport.twitter %></span>
+	</p>
+<% end %>
+
+<p><span class="mode attr-display">
+	<%= t('activerecord.attributes.transport.mode') %>: </span>
+	<%= @transport.humanized_mode %>
+</p>
+
+<p><span class="lines-stations attr-display">
+	<%= t('activerecord.attributes.transport.lines')%>:
+	</span>
+	<%= count_humanized_with('messages.lines.number', @transport.lines.count).html_safe %>
+</p>

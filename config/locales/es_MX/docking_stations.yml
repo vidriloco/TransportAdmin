@@ -1,0 +1,24 @@
+es_MX:
+  activerecord:
+    models:
+      docking_station: "Estación de préstamo de bicis"
+    attributes:
+      docking_station:
+        name: "Nombre (o identificador)"
+        coordinates: "Coordenadas"
+  docking_stations:  
+    destroy:
+      messages:
+        done: "Estación de préstamo de bicis eliminada"
+    index:
+      title: "Estaciones de préstamo de bicis"
+      no_records: "No hay estaciones de préstamo de bicis registradas"
+      count:
+        one: "Una estación de préstamo de bicis"
+        other: "%{number} estaciones de préstamo de bicis"
+    new:
+      title: "Nueva estación de préstamo de bicis"
+    create:
+      messages:
+        saved: "Estación de prestamo de bicis guardada"
+        not_saved: "No fue posible guardar la estación de préstamo de bicis"

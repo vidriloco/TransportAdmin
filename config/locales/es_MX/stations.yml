@@ -28,6 +28,9 @@ es_MX:
     index:
       title: "Estaciones de esta línea"
       no_records: "No hay estaciones registradas aún"
+      count:
+        one: "Una estación"
+        other: "%{number} estaciones"
     create:
       messages:
         saved: "La estación ha sido guardada"

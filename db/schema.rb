@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218050825) do
+ActiveRecord::Schema.define(:version => 20120219064844) do
 
   create_table "connections", :force => true do |t|
     t.integer  "one_station_id",     :null => false
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20120218050825) do
   add_index "connections", ["one_station_id", "another_station_id", "one_line_id", "another_line_id"], :name => "stations_lines_id_ix", :unique => true
   add_index "connections", ["one_station_id"], :name => "one_station_id_ix"
 
+  create_table "docking_stations", :force => true do |t|
+    t.string   "name",                        :null => false
+    t.integer  "transport_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.point    "coordinates",  :limit => nil, :null => false, :srid => 4326
+  end
+
   create_table "lines", :force => true do |t|
     t.string   "name",           :null => false
     t.string   "right_terminal", :null => false
@@ -42,13 +50,6 @@ ActiveRecord::Schema.define(:version => 20120218050825) do
   end
 
   add_index "lines", ["transport_id"], :name => "transport_id_ix"
-
-  create_table "partitions", :force => true do |t|
-    t.string   "name"
-    t.integer  "transport_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
 
   create_table "segments", :force => true do |t|
     t.integer  "line_id",                                   :null => false

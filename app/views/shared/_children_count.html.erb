@@ -1,0 +1,7 @@
+<li class="rounded-5">
+	<% if (count=model_from.send(property).count)==1 %>
+		<%= t("#{property.to_s}.index.count.one") %>
+	<% else %>
+		<%= t("#{property.to_s}.index.count.other", :number => count) %>
+	<% end %>
+</li>

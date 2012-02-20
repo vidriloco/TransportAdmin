@@ -26,6 +26,9 @@ es_MX:
       connector: "==="
       title: "Correspondencias con esta línea"
       no_records: "No hay correspondencias registradas para esta línea"
+      count:
+        one: "Una correspondencia"
+        other: "%{number} correspondencias"
     edit:
       title: "Modificar Correspondencia"
     new:
