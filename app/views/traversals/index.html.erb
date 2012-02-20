@@ -1,0 +1,11 @@
+<h1><%= t('traversals.index.title') %></h1>
+
+<p class="section-button"><%= link_to t('actions.traversals.add'), new_traversal_path %></p>
+
+<div class="main-content">
+	<% if @traversals.empty? %>
+		<%= t('traversals.index.no_records') %>
+	<% else %>
+		<%= render @traversals %>
+	<% end %>
+</div>

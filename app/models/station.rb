@@ -2,9 +2,10 @@ class Station < ActiveRecord::Base
   include Models::GeographySupport
   include Models::HumanizatorSupport
   
-  belongs_to :line
   has_many :segments
   has_many :connections
+  has_many :traversals
+  belongs_to :line
   
   validates_presence_of :name, :coordinates, :line
     
@@ -12,6 +13,6 @@ class Station < ActiveRecord::Base
   
   
   def self.bike_parking_opts
-    { 1 => :internal, 2 => :external }
+    { 1 => :internal, 2 => :external, 3 => :none }
   end
 end

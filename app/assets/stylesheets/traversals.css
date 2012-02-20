@@ -1,0 +1,19 @@
+.traversal {
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color:#D9DEB4;
+	border: 2px solid #BDC19D;
+}
+
+.traversal:hover {
+	background-color:#CCD0A9;
+	border: 2px solid #BDC19D;
+}
+
+.traversal .one {
+	font-weight: bold;
+}
+
+.traversal .transport {
+	float: left;
+}

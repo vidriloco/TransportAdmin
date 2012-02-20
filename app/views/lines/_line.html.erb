@@ -5,7 +5,7 @@
 	<span class="right inlined">
 		<%= button_to t('actions.delete'), line_path(line), 
 				:method => :delete, 
-				:confirm => I18n.t('messages.destroy_confirmation') %>
+				:confirm => t('messages.destroy_confirmation') %>
 	  <%= link_to t('actions.edit'), edit_line_path(line) %>
 	</span>
 </div>

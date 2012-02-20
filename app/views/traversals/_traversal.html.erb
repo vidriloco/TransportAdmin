@@ -1,0 +1,12 @@
+<div class="traversal inlined rounded-8" id="traversal-<%= traversal.id %>">
+	<span class="transport"><%= link_to traversal.another_station.line.transport.name, traversal.another_station.line.transport %></span>
+	
+	<span class="one"><%= traversal.one_station.name %></span>-
+	<span class="one"><%= traversal.another_station.name %></span>
+	<%= button_to t('actions.delete'), traversal, :method => :delete, :confirm => t('messages.destroy_confirmation') %>
+
+	<span class="line"><%= link_to traversal.one_station.line.name, traversal.one_station.line %></span>
+	<% if traversal.one_station.line != traversal.another_station.line %>
+		<span class="line"> -> <%= link_to traversal.another_station.line.name, traversal.another_station.line %></span>
+	<% end %>
+</div>

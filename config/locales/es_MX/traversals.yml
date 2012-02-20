@@ -1,0 +1,28 @@
+es_MX:
+  activerecord:
+    models:
+      traversal: "Ruta"
+    attributes:
+      traversal:
+        description: "Descripción"
+        one_station: "Primer estación"
+        another_station: "Segunda estación"
+        
+  traversals:  
+    destroy:
+      messages:
+        done: "Ruta eliminada"
+    index:
+      title: "Rutas"
+      no_records: "No hay rutas registradas"
+      between: "Ruta entre:"
+    new:
+      title: "Nueva Ruta"
+    update:
+      messages:
+        saved: "La ruta ha sido actualizada"
+        not_saved: "La ruta no fue actualizada"
+    create:
+      messages:
+        saved: "La ruta fue guardada"
+        not_saved: "La ruta no pudo ser guardada"

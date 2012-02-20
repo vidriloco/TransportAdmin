@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219064844) do
+ActiveRecord::Schema.define(:version => 20120220034241) do
 
   create_table "connections", :force => true do |t|
     t.integer  "one_station_id",     :null => false
@@ -76,6 +76,18 @@ ActiveRecord::Schema.define(:version => 20120219064844) do
     t.point    "coordinates",   :limit => nil, :null => false, :srid => 4326
   end
 
+  create_table "time_tables", :force => true do |t|
+    t.time     "saturday_start"
+    t.time     "saturday_end"
+    t.time     "sunday_start"
+    t.time     "sunday_end"
+    t.time     "weekday_start"
+    t.time     "weekday_end"
+    t.integer  "traversal_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "transports", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "twitter"
@@ -86,8 +98,11 @@ ActiveRecord::Schema.define(:version => 20120219064844) do
   end
 
   create_table "traversals", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "one_station_id"
+    t.integer  "another_station_id"
+    t.string   "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "ways", :force => true do |t|

@@ -17,6 +17,7 @@ es_MX:
     bike_parking:
       internal: "Dentro de la estación"
       external: "Fuera de la estación"
+      none: "No tiene"
     length:
       short: "Corta"
       medium: "Media"
@@ -26,6 +27,8 @@ es_MX:
       external: "Externa"
       
   actions:
+    traversals:
+      add: "Agregar nueva ruta"
     transports:
       add: "Agregar nuevo transporte"
     lines:

@@ -2,11 +2,6 @@
 
 FactoryGirl.define do
   
-  factory :cyclostation, :class => Station do |t|
-    t.name "Any cyclostation"
-    t.coordinates Point.from_lon_lat(-99.140496, 19.378269, 4326)
-  end
-  
   factory :observatorio, :class => Station do |t|
     t.name "Observatorio"
     t.coordinates Point.from_lon_lat(-99.240496, 19.358269, 4326)

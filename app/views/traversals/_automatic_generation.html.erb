@@ -1,0 +1,19 @@
+<% if @line.can_generate_basic_traversals? %>
+	<% if @line.basic_traversals.empty? %>
+		<%= t('lines.index.traversals.can_generate') %>
+		<%= button_to t('lines.index.traversals.generate'), traversal_generate_automatic_path(@line) %>
+	<% else %>
+		<div class="inlined">
+			<%= t('lines.index.traversals.generated') %>
+		</div>
+		<span class="item"><b><%= t('lines.index.traversals.traversal') %></b> 
+			<%= @line.basic_traversals[0].one_station.name %> - <%= @line.basic_traversals[0].another_station.name %>
+		</span>
+		<span class="item last"><b><%= t('lines.index.traversals.traversal') %></b> 
+			<%= @line.basic_traversals[1].one_station.name %> - <%= @line.basic_traversals[1].another_station.name %>
+		</span>
+		<%= button_to t('lines.index.traversals.destroy'), traversal_destroy_automatic_path(@line), :method => :delete %>
+	<% end %>
+<% else %>
+	<%= t('lines.index.traversals.cannot_generate') %>
+<% end %>

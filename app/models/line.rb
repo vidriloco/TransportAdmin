@@ -22,4 +22,27 @@ class Line < ActiveRecord::Base
   def name_by_directions
     "#{left_terminal} - #{right_terminal}"
   end
+  
+  def can_generate_basic_traversals?
+    get_terminals.length==2
+  end
+  
+  def basic_traversals
+    one_st, another_st = get_terminals
+    return [] if one_st.nil? && another_st.nil?
+    
+    Traversal.where('(one_station_id = :s1 AND another_station_id = :s2) OR (one_station_id = :s2 AND another_station_id = :s1)', 
+      {:s1 => one_st, :s2 => another_st})
+  end
+  
+  def generate_basic_traversals
+    Traversal.build_new_between!(right_terminal, left_terminal, :by => id)
+    Traversal.build_new_between!(left_terminal, right_terminal, :by => id)
+  end
+  
+  private
+  
+  def get_terminals
+    Station.where('(name = :name_right OR name = :name_left) AND line_id = :line_id', {:name_right => right_terminal, :name_left => left_terminal, :line_id => id})
+  end
 end

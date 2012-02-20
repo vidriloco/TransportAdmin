@@ -324,7 +324,46 @@ feature 'Reviewing the details of a line: '  do
         end
       end
     end
-   
+    
+    describe "automatically generating the simple routes for a line" do
+      
+      it "should not be possible when one or both of the line terminals cannot be found" do
+        page.should have_content I18n.t('lines.index.traversals.cannot_generate')
+      end
+      
+      describe "when having both line terminals registered" do
+        
+        before(:each) do
+          Factory(:station, :name => @line.right_terminal, :line_id => @line.id)
+          Factory(:station, :name => @line.left_terminal, :line_id => @line.id)
+        end
+        
+        it "should be possible" do
+          visit line_path(@line)
+          
+          page.should have_content I18n.t('lines.index.traversals.can_generate')
+          click_on I18n.t('lines.index.traversals.generate')
+          page.should have_content I18n.t('lines.create.messages.traversals.generated')
+          page.current_path.should == line_path(@line)
+          
+          page.should have_content I18n.t('lines.index.traversals.traversal')
+          page.should have_content @line.right_terminal
+          page.should have_content @line.left_terminal
+          
+          page.should have_content I18n.t('lines.index.traversals.traversal')
+          page.should have_content @line.left_terminal
+          page.should have_content @line.right_terminal
+          
+          page.should have_content I18n.t('lines.index.traversals.generated')
+          click_on I18n.t('lines.index.traversals.destroy')
+          page.should have_content I18n.t('lines.destroy.messages.traversals.done')
+          page.current_path.should == line_path(@line)
+        end
+        
+      end
+      
+    end
+    
   end
 end
 

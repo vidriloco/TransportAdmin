@@ -1,0 +1,24 @@
+<% if @traversal.errors.any? %>
+	<% content_for :alerts do %>
+		<%= t('traversals.create.messages.not_saved') %>
+	<% end %>
+<% end %>
+
+<% content_for :header do %>
+	<%= t('traversals.new.title') %>
+<% end %>
+
+<br/>
+
+<div class="block">
+	<%= form_for @traversal do |f| %>
+		<div class="simple-form">
+			<%= render :partial => 'form', :locals => {:f => f} %>
+		</div>
+		<%= f.submit t('actions.save'), :class => "submit-button" %>
+	<% end %>
+</div>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), traversals_path %>
+<% end %>

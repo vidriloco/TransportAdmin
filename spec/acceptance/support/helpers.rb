@@ -3,6 +3,7 @@ module HelperMethods
   def sections_menu_should_be_visible
     find_link Transport.model_name.human.pluralize
     find_link Line.model_name.human.pluralize
+    find_link Traversal.model_name.human.pluralize
   end
   
   def simulate_click_on_map(coordinates)

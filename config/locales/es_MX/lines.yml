@@ -23,9 +23,23 @@ es_MX:
       count:
         one: "Una línea"
         other: "%{number} lineas"
+      traversals:
+        traversal: "Ruta:"
+        generate: "Generar"
+        generated: "Ya han sido generadas las rutas básicas entre las estaciones terminales de esta línea"
+        destroy: "Eliminarlas"
+        can_generate: "Las rutas básicas entre estaciones terminales de esta línea pueden ser generadas"
+        cannot_generate: "Las rutas básicas entre estaciones terminales de esta línea aún no pueden ser generadas. Necesitan existir las estaciones terminales"
+    
+    destroy:
+      messages:
+        traversals:
+          done: "Las rutas automáticas para esta línea fueron eliminadas"
     create:
       messages:
         saved: "Línea ha sido guardada"
         not_saved: "Línea no pudo ser guardada"
+        traversals:
+          generated: "Las rutas automáticas para esta línea han sido generadas"
     new:
       title: "Nueva Línea"

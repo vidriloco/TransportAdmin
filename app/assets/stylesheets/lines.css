@@ -59,3 +59,19 @@
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 }
+
+.traversal-basic {
+	background-color:#D3DEB9;
+	float: right;
+	top: -30px;
+	position: relative;
+	clear: both;
+	width: 250px;
+	padding: 15px;
+	font-size: 10px;
+}
+
+.traversal-basic .item { 
+	display: block;
+	text-align: right;
+}

@@ -1,0 +1,15 @@
+<br/>
+<div class="inlined-spaced">
+	
+	<div>
+		<%= f.label :one_station, t('activerecord.attributes.traversal.one_station') %>
+		<%= f.select :one_station_id, 
+		option_groups_from_collection_for_select(Line.all, :stations, :line_transport, :id, :name), {:include_blank => true} %>
+	</div>
+	
+	<div>
+		<%= f.label :another_station, t('activerecord.attributes.traversal.another_station') %>
+		<%= f.select :another_station_id, 
+		option_groups_from_collection_for_select(Line.all, :stations, :line_transport, :id, :name), {:include_blank => true} %>
+	</div>
+</div>

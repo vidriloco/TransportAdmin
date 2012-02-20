@@ -5,7 +5,7 @@ class Transport < ActiveRecord::Base
   validates_presence_of :name, :mode
   
   def self.modes
-    { 1 => :bike_sharing, 2 => :subway, 3 => :bus_rapid_transit, 4 => :bus, 5 => :light_tram}
+    { 1 => :bike_sharing, 2 => :subway, 3 => :bus_rapid_transit, 4 => :bus, 5 => :light_tram, 6 => :commuter_rail}
   end
   
   def self.humanized_modes

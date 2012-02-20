@@ -21,7 +21,12 @@ TransportAdder::Application.routes.draw do
   end
   
   resources :connections
+  
+  post "/traversals/:line_id/generate_automatic" => "traversals#generate_automatic", :as => :traversal_generate_automatic
+  delete "/traversals/:line_id/destroy_automatic" => "traversals#destroy_automatic", :as => :traversal_destroy_automatic
+  
   resources :traversals
+  
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
