@@ -7,6 +7,8 @@ es_MX:
         lines: "Número de líneas"
         partitions: "Número de particiones"
         name: "Nombre"
+        popular_name: "Nombre común"
+        merge_stations_with_same_name: "¿Deben considerarse estaciones con un mismo nombre la misma estación para este transporte?"
         mode: "Tipo según modo del transporte"
         web_page: "Página web"
         twitter: "Twitter"

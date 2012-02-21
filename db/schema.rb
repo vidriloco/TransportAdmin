@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120220034241) do
+ActiveRecord::Schema.define(:version => 20120221231533) do
 
   create_table "connections", :force => true do |t|
     t.integer  "one_station_id",     :null => false
@@ -40,13 +40,14 @@ ActiveRecord::Schema.define(:version => 20120220034241) do
   end
 
   create_table "lines", :force => true do |t|
-    t.string   "name",           :null => false
-    t.string   "right_terminal", :null => false
-    t.string   "left_terminal",  :null => false
-    t.integer  "transport_id",   :null => false
+    t.string   "name",              :null => false
+    t.string   "right_terminal",    :null => false
+    t.string   "left_terminal",     :null => false
+    t.integer  "transport_id",      :null => false
     t.string   "color"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "simple_identifier"
   end
 
   add_index "lines", ["transport_id"], :name => "transport_id_ix"
@@ -89,12 +90,14 @@ ActiveRecord::Schema.define(:version => 20120220034241) do
   end
 
   create_table "transports", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",                                             :null => false
     t.string   "twitter"
     t.string   "web_page"
-    t.integer  "mode",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "mode",                                             :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.string   "popular_name"
+    t.boolean  "merge_stations_with_same_name", :default => false
   end
 
   create_table "traversals", :force => true do |t|

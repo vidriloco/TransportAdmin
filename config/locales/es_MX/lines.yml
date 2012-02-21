@@ -5,6 +5,7 @@ es_MX:
     attributes:
       line:
         name: "Nombre"
+        simple_identifier: "Identificador simple"
         name_by_directions: "Nombre por sus direcciones"
         right_terminal: "Terminal oriente (o sur)"
         left_terminal: "Terminal poniente (o norte)"
