@@ -2,6 +2,7 @@ class Line < ActiveRecord::Base
   has_many :ways
   has_many :stations
   has_many :segments
+  has_many :vehicles
   
   belongs_to :transport
   
