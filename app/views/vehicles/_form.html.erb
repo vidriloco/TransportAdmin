@@ -1,0 +1,8 @@
+<%= f.label :identifier, t('activerecord.attributes.vehicle.identifier') %>
+<%= f.text_field :identifier %>
+
+<%= f.label :description, t('activerecord.attributes.vehicle.description') %>
+<%= f.text_area :description, :rows => 2, :cols => 90 %>
+
+<%= f.label :line_id, t('activerecord.attributes.vehicle.line') %>
+<%= f.select :line_id, option_groups_from_collection_for_select(Transport.all, :lines, :name, :id, :name) %>

@@ -20,6 +20,8 @@ TransportAdder::Application.routes.draw do
     resources :ways, :only => [:create]
   end
   
+  resources :vehicles
+  
   resources :connections
   
   post "/traversals/:line_id/generate_automatic" => "traversals#generate_automatic", :as => :traversal_generate_automatic

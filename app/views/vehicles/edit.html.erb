@@ -1,0 +1,24 @@
+<% if @vehicle.errors.any? %>
+	<% content_for :alerts do %>
+		<%= t('vehicles.update.messages.not_saved') %>
+	<% end %>
+<% end %>
+
+<% content_for :header do %>
+	<%= t('vehicles.edit.title') %>
+<% end %>
+
+<br/>
+
+<div class="block">
+	<%= form_for @vehicle do |f| %>
+		<div class="simple-form">
+			<%= render :partial => 'form', :locals => {:f => f} %>
+		</div>
+		<%= f.submit t('actions.save'), :class => "submit-button" %>
+	<% end %>
+</div>
+
+<% content_for :footer do %>
+	<%= link_to t('actions.back'), vehicles_path %>
+<% end %>

@@ -27,6 +27,8 @@ es_MX:
       external: "Externa"
       
   actions:
+    vehicles:
+      add: "Agregar nuevo vehículo"
     traversals:
       add: "Agregar nueva ruta"
     transports:

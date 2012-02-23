@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222000123) do
+ActiveRecord::Schema.define(:version => 20120222002645) do
 
   create_table "connections", :force => true do |t|
     t.integer  "one_station_id",     :null => false
@@ -116,6 +116,16 @@ ActiveRecord::Schema.define(:version => 20120222000123) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
+
+  create_table "vehicles", :force => true do |t|
+    t.integer  "identifier",  :limit => 8
+    t.string   "description"
+    t.integer  "line_id"
+    t.datetime "created_at"
+  end
+
+  add_index "vehicles", ["id"], :name => "vehicles_pk"
+  add_index "vehicles", ["identifier"], :name => "vehicles_identifier", :unique => true
 
   create_table "ways", :force => true do |t|
     t.string      "description"
