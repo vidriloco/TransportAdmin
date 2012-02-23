@@ -18,5 +18,5 @@
 </div>
 
 <% content_for :footer do %>
-	<%= link_to t('actions.back'), transport_path(@transport) %>
+	<%= link_to t('actions.back'), transport_path(@docking_station.transport || @transport) %>
 <% end %>

@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20120221231533) do
     t.integer  "transport_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
-    t.point    "coordinates",  :limit => nil, :null => false, :srid => 4326
+    t.geometry "coordinates",  :limit => nil, :null => false
   end
 
   create_table "lines", :force => true do |t|
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20120221231533) do
     t.integer  "line_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.point    "coordinates",   :limit => nil, :null => false, :srid => 4326
+    t.geometry "coordinates",   :limit => nil, :null => false
   end
 
   create_table "time_tables", :force => true do |t|
@@ -109,11 +109,11 @@ ActiveRecord::Schema.define(:version => 20120221231533) do
   end
 
   create_table "ways", :force => true do |t|
-    t.string      "description"
-    t.integer     "line_id",                    :null => false
-    t.datetime    "created_at",                 :null => false
-    t.datetime    "updated_at",                 :null => false
-    t.line_string "content",     :limit => nil, :null => false, :srid => 4326
+    t.string   "description"
+    t.integer  "line_id",                    :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.geometry "content",     :limit => nil, :null => false
   end
 
   add_index "ways", ["line_id"], :name => "line_id_ix"
