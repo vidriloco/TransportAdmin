@@ -16,7 +16,6 @@ feature 'Adding of a traversal: '  do
     end
     
     describe "when visiting the new traversal page" do
-  
     
       it "should let me add a new traversal" do
         visit traversals_path
@@ -29,6 +28,7 @@ feature 'Adding of a traversal: '  do
         
         select "Observatorio", :from => "traversal_one_station_id"
         select "Tepalcates", :from => "traversal_another_station_id"
+        check "traversal_is_main"
         
         click_on I18n.t('actions.save')
         
@@ -38,6 +38,9 @@ feature 'Adding of a traversal: '  do
         within("#traversal-#{Traversal.first.id}") do
           page.should have_content Traversal.first.one_station.name
           page.should have_content Traversal.first.another_station.name
+          
+          page.should have_content I18n.t('traversals.show.is_main')[true]
+          
           find_link Traversal.first.one_station.line.transport.name
           
           find_button I18n.t('actions.delete')

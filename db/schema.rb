@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222002645) do
+ActiveRecord::Schema.define(:version => 20120301205719) do
 
   create_table "connections", :force => true do |t|
     t.integer  "one_station_id",     :null => false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20120222002645) do
     t.integer  "transport_id"
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
-    t.geometry "coordinates",  :limit => nil, :null => false
+    t.point    "coordinates",  :limit => nil, :null => false, :srid => 4326
   end
 
   create_table "instants", :force => true do |t|
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20120222002645) do
     t.datetime "created_at"
     t.point    "coordinates",         :limit => nil, :null => false, :srid => 4326
   end
+
+  add_index "instants", ["vehicle_id"], :name => "instants_vehicle_id"
 
   create_table "lines", :force => true do |t|
     t.string   "name",              :null => false
@@ -83,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20120222002645) do
     t.integer  "line_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
-    t.geometry "coordinates",   :limit => nil, :null => false
+    t.point    "coordinates",   :limit => nil, :null => false, :srid => 4326
   end
 
   create_table "time_tables", :force => true do |t|
@@ -113,8 +115,9 @@ ActiveRecord::Schema.define(:version => 20120222002645) do
     t.integer  "one_station_id"
     t.integer  "another_station_id"
     t.string   "description"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "is_main",            :default => true
   end
 
   create_table "vehicles", :force => true do |t|
@@ -128,11 +131,11 @@ ActiveRecord::Schema.define(:version => 20120222002645) do
   add_index "vehicles", ["identifier"], :name => "vehicles_identifier", :unique => true
 
   create_table "ways", :force => true do |t|
-    t.string   "description"
-    t.integer  "line_id",                    :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.geometry "content",     :limit => nil, :null => false
+    t.string      "description"
+    t.integer     "line_id",                    :null => false
+    t.datetime    "created_at",                 :null => false
+    t.datetime    "updated_at",                 :null => false
+    t.line_string "content",     :limit => nil, :null => false, :srid => 4326
   end
 
   add_index "ways", ["line_id"], :name => "line_id_ix"

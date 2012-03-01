@@ -1,5 +1,9 @@
 <div class="traversal inlined rounded-8" id="traversal-<%= traversal.id %>">
-	<span class="transport"><%= link_to traversal.another_station.line.transport.name, traversal.another_station.line.transport %></span>
+	<span class="transport">
+		<%= link_to traversal.another_station.line.transport.name, traversal.another_station.line.transport %>
+	</span>
+	
+	<span class="main"><%= t('traversals.show.is_main')[traversal.is_main] %></span>
 	
 	<span class="one"><%= traversal.one_station.name %></span>-
 	<span class="one"><%= traversal.another_station.name %></span>

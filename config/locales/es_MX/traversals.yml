@@ -4,6 +4,7 @@ es_MX:
       traversal: "Ruta"
     attributes:
       traversal:
+        is_main: "¿Es ruta principal?"
         description: "Descripción"
         one_station: "Primer estación"
         another_station: "Segunda estación"
@@ -12,6 +13,10 @@ es_MX:
     destroy:
       messages:
         done: "Ruta eliminada"
+    show:
+      is_main:
+        yes: "Es una ruta principal"
+        no: "Es una subruta"
     index:
       title: "Rutas"
       no_records: "No hay rutas registradas"

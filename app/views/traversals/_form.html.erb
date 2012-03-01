@@ -12,4 +12,9 @@
 		<%= f.select :another_station_id, 
 		option_groups_from_collection_for_select(Line.all, :stations, :line_transport, :id, :name), {:include_blank => true} %>
 	</div>
+	
+	<div>
+		<%= f.check_box :is_main, :checked => @traversal.is_main || true %>
+		<b><%= t('activerecord.attributes.traversal.is_main') %></b>
+	</div>
 </div>
