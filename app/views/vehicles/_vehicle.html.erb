@@ -1,0 +1,18 @@
+<div id="vehicle-<%= vehicle.id %>" class="vehicle rounded-5">
+	<div class="identifier">
+		<%= vehicle.identifier %>
+	</div>
+	
+	<div class="description">
+		<%= vehicle.description %>
+	</div>
+	
+	<div class="right">
+		<b><%= t('activerecord.attributes.vehicle.line') %>:</b><br/>
+		<% if vehicle.belongs_to_line_transport? %>
+			<%= link_to vehicle.line.line_transport, vehicle.line %><br/></br/>
+		<% end %>
+		<%= link_to t('actions.delete'), vehicle, :method => :delete , :class => "edit", :confirm => t('messages.destroy_confirmation') %>
+		<%= link_to t('actions.edit'), edit_vehicle_path(vehicle) , :class => "edit" %>
+	</div>
+</div>

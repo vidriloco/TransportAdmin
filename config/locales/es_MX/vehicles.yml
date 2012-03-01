@@ -1,0 +1,30 @@
+es_MX:
+  activerecord:
+    models:
+      vehicle: "Vehículo"
+    attributes:
+      vehicle:
+        identifier: "Identificador"
+        description: "Descripción"
+        line: "Línea o ruta"
+  vehicles:  
+    destroy:
+      messages:
+        done: "Vehículo eliminado"
+    edit:
+      title: "Modificar datos de vehículo"
+    show:
+      title: "Detalles de vehículo"
+    index:
+      title: "Vehículos"
+      no_records: "No hay vehículos registrados"
+    new:
+      title: "Nuevo Vehículo"
+    update:
+      messages:
+        saved: "El vehículo ha sido actualizado"
+        not_saved: "El vehículo no fue actualizado"
+    create:
+      messages:
+        saved: "El vehículo ha sido guardado"
+        not_saved: "El vehículo no pudo ser guardado"

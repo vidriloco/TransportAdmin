@@ -6,6 +6,8 @@ class AddFieldsToTransportsAndLinesTables < ActiveRecord::Migration
   end
 
   def down
-    remove_column :accounts, :ssl_enabled
+    remove_column :transports, :popular_name
+    remove_column :lines, :simple_identifier
+    remove_column :transports, :merge_stations_with_same_name
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221231533) do
+ActiveRecord::Schema.define(:version => 20120222002645) do
 
   create_table "connections", :force => true do |t|
     t.integer  "one_station_id",     :null => false
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(:version => 20120221231533) do
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.geometry "coordinates",  :limit => nil, :null => false
+  end
+
+  create_table "instants", :force => true do |t|
+    t.float    "speed"
+    t.boolean  "is_old"
+    t.boolean  "has_highest_quality"
+    t.integer  "vehicle_id"
+    t.datetime "created_at"
+    t.point    "coordinates",         :limit => nil, :null => false, :srid => 4326
   end
 
   create_table "lines", :force => true do |t|
@@ -107,6 +116,16 @@ ActiveRecord::Schema.define(:version => 20120221231533) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
+
+  create_table "vehicles", :force => true do |t|
+    t.integer  "identifier",  :limit => 8
+    t.string   "description"
+    t.integer  "line_id"
+    t.datetime "created_at"
+  end
+
+  add_index "vehicles", ["id"], :name => "vehicles_pk"
+  add_index "vehicles", ["identifier"], :name => "vehicles_identifier", :unique => true
 
   create_table "ways", :force => true do |t|
     t.string   "description"

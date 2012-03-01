@@ -1,0 +1,25 @@
+.vehicle {
+	border: 1px solid #EDEDED;
+	padding: 10px;
+	text-align: left;
+	width: 25%;
+	margin: 10px;
+}
+
+.vehicle:hover {
+	background-color:#F4F4F4;
+	border: 1px solid #DFDFDF;
+}
+
+.vehicle .description { padding: 3px }
+
+.vehicle .identifier {
+	font-size: 23px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.vehicle .edit {
+	font-weight: bold;
+	font-size: 12px;
+}
