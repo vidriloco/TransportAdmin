@@ -9,7 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require lines
+ *= require scaffolds
+ *= require transports
+ *= require traversals
+ *= require vehicles
+
 */
 html { background-color:#C9E1F0 }
 

@@ -1,0 +1,26 @@
+html, body {width: 100%; height: 100%; overflow: hidden }
+body {margin-top: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; font-family : calibri; }
+html {
+	background-color:#C9E1F0
+}
+
+.sections {
+	position: fixed;
+	top: 30px;
+	right: 30px;
+}
+
+.sections a:hover {
+	background-color:#373737;
+}
+
+.sections a {
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 10px;
+	background-color: #050505;
+	font-weight: bold;
+	font-size: 13px;
+	text-decoration: none;
+	color: #E3E3E3;
+}

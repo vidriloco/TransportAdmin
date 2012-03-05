@@ -14,5 +14,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require datajs
+//= require springy
+//= require springyui
 //= require_tree .
 

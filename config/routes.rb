@@ -6,6 +6,8 @@ TransportAdder::Application.routes.draw do
     resources :docking_stations
   end
     
+  resources :visualizations, :only => [:index]  
+  
   resources :docking_stations, :except => [:edit, :update, :show]
   resources :stations
   
