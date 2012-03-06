@@ -2,12 +2,11 @@ var graph = new Graph();
 var stationsBuilt = new Data.Hash();
 
 function buildGraph(nodeList, relations) {
-
-	for(var nodeIdx in nodeList) {
-		var labelValue = nodeList[nodeIdx];
-		var node = graph.newNode({label: labelValue });
-		stationsBuilt.set(labelValue, node);
-	}
+	
+	$.each(nodeList, function(i, value) {
+		var node = graph.newNode({label: value });
+		stationsBuilt.set(i, node);
+	});
 	
 	for(var relationIdx in relations) {
 		var relationValue = relations[relationIdx];

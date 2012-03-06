@@ -284,7 +284,6 @@ feature 'Reviewing the details of a line: '  do
               within(".one") do
                 page.should have_content @tacubaya_dos.name
               end
-              page.should have_content I18n.t('connections.index.connector')
               within(".another") do
                 page.should have_content @tacubaya.name
               end
@@ -307,7 +306,6 @@ feature 'Reviewing the details of a line: '  do
               within(".one") do
                 page.should have_content @tacubaya_dos.name
               end
-              page.should have_content I18n.t('connections.index.connector')
               within(".another") do
                 page.should have_content @observatorio.name
               end

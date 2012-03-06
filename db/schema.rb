@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(:version => 20120301205719) do
     t.point    "coordinates",         :limit => nil, :null => false, :srid => 4326
   end
 
-  add_index "instants", ["vehicle_id"], :name => "instants_vehicle_id"
-
   create_table "lines", :force => true do |t|
     t.string   "name",              :null => false
     t.string   "right_terminal",    :null => false

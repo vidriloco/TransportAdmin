@@ -3,19 +3,48 @@
 	background-color:#F2F2F2;
 }
 
-.station, .segment, .connection {
+.segment { 
+	display: block;
+	height: 30px;
+}
+
+.segment span {
+	margin-top: 2px;
+	margin-left: 10px;
+}
+
+.segment .origin {
+	width: 240px;
+}
+
+.segment .actions, .connection .actions { float: right; }
+
+.station { 
+	display: inline-block;
+	width: 320px;
+}
+
+.connection p { margin: 0px; font-size: 11px }
+
+.connection:hover { background-color:#D5D5D5 }
+.connection {
+	padding: 5px 1px 9px 1px;
+	margin: 4px 6px;
+	border-bottom: 1px solid #CFCFCF;
+}
+
+.station, .segment {
 	border: 1px solid #E5E5E5;
 	padding: 5px 1px 2px 1px;
 	margin: 4px 3px;
-	display: inline-block;
 }
 
-.station .actions:hover, .segment .actions:hover, .connection .actions:hover {
+.station .actions:hover, .segment .actions:hover {
 	background-color:#E7E7E7;
 	border: 1px solid #DADADA;
 }
 
-.station .actions, .segment .actions, .connection .actions {
+.station .actions, .segment .actions {
 	padding: 2px;
 	background-color:#F4F4F4;
 	border: 1px solid #ECECEC;

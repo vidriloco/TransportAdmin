@@ -3,7 +3,7 @@
 	<h2><%= t('segments.index.title') %></h2>
 	<h3><span>+</span><%= link_to t('segments.new.title'), new_line_segment_path(station_line) %></h3>
 </div>
-
+<br/>
 
 <% if station_line.segments.empty? %>
 	<%= t('segments.index.no_records') %>

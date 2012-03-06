@@ -2,6 +2,7 @@
 	<h2><%= t('connections.index.title') %></h2>
 	<h3><span>+</span><%= link_to t('connections.new.title'), new_line_connection_path(station_line) %></h3>
 </div>
+<br/>
 
 <% if station_line.connections.empty? %>
 	<%= t('connections.index.no_records') %>
