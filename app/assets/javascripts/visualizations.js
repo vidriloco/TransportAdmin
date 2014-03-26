@@ -16,7 +16,7 @@ function buildGraph(nodeList, relations) {
 		var relationText = relationValue[2];
 		var relationColor = relationValue[3];
 		graph.newEdge(firstStation, secondStation, {color: relationColor});
-	}
+	}	
 }
 
 $(document).ready(function() {
@@ -29,6 +29,7 @@ $(document).ready(function() {
 				url: url,
 		    dataType: 'jsonp',
 		    success: function(response) {
+					console.log(response);
 					buildGraph(response[0], response[1]);
 					var springy = jQuery(domGraphAttachElement).springy({
 						graph: graph
@@ -37,5 +38,4 @@ $(document).ready(function() {
 		});
 		
 	}
-
 });

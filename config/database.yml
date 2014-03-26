@@ -15,9 +15,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: transport_adder_development
+  database: transport_dev
   pool: 5
-  username: postgres
+  username: spalatin
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
